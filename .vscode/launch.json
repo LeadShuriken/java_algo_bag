@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch UnionFindTest",
+            "request": "launch",
+            "mainClass": "union_find.UnionFindTest",
+            "projectName": "java_algo_bag_bb23d4cb"
+        },
+        {
+            "type": "java",
+            "name": "Launch RandomWord",
+            "request": "launch",
+            "mainClass": "prime.RandomWord",
+            "projectName": "java_algo_bag_bb23d4cb"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - HelloWorld",
+            "request": "launch",
+            "mainClass": "prime.HelloWorld",
+            "projectName": "java_algo_bag_bb23d4cb"
+        }
+    ]
+}

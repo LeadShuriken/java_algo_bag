@@ -1,18 +1,22 @@
 package union_find;
 
-import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
+import utils.StdInReader;
 
 public class UnionFindTest {
     public static void main(String[] args) {
-        int N = StdIn.readInt();
+        StdInReader b = new StdInReader();
+        int N = b.readInt();
         QuickFindUF uf = new QuickFindUF(N);
-        while (!StdIn.isEmpty()) {
-            int p = StdIn.readInt();
-            int q = StdIn.readInt();
-            if (!uf.connected(p, q)) {
-                uf.union(p, q);
-                StdOut.println(p + " " + q);
+        while (true) {
+            try {
+                int p = b.readInt();
+                int q = b.readInt();
+                if (!uf.connected(p, q)) {
+                    uf.union(p, q);
+                    System.out.println(p + " " + q);
+                }
+            } catch (Exception e) {
+                break;
             }
         }
     }
