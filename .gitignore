@@ -1,5 +1,7 @@
 *.class
 *.txt
 *.zip
+*.project
+/.vscode
 /lib
 /test
