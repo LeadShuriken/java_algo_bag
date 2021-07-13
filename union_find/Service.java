@@ -2,11 +2,13 @@ package union_find;
 
 import utils.StdInReader;
 
-public class UnionFindTest {
+public class Service {
     public static void main(String[] args) {
         StdInReader b = new StdInReader();
         int N = b.readInt();
-        QuickFindUF uf = new QuickFindUF(N);
+        UnionFind uf = new QuickFindUF(N);
+        // UnionFind uf = new QuickUnionUF(N);
+        // UnionFind uf = new QuickUnionImpUF(N);
         while (true) {
             try {
                 int p = b.readInt();
