@@ -1,8 +1,9 @@
 package union_find;
 
-import java.io.Console;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+
+// import java.util.ArrayList;
+// import java.util.List;
 
 public class QuickUnionImpUF extends UnionFind {
     private int[] sz;
@@ -12,6 +13,7 @@ public class QuickUnionImpUF extends UnionFind {
     public QuickUnionImpUF(int N) {
         super(N);
         sz = new int[N];
+        Arrays.fill(sz, 1);
         max = id.clone();
         min = id.clone();
     }
@@ -29,6 +31,7 @@ public class QuickUnionImpUF extends UnionFind {
     // return i;
     // }
 
+    // TC: O(log*n)/2
     private int root(int i) {
         while (i != id[i]) {
             id[i] = id[id[i]];
@@ -37,10 +40,17 @@ public class QuickUnionImpUF extends UnionFind {
         return i;
     }
 
+    // TC: O(log*n)/2
+    public int getDepth(int i) {
+        return sz[root(i)];
+    }
+
+    // TC: O(log*n)/2
     public int findMax(int i) {
         return max[root(i)];
     }
 
+    // TC: O(log*n)/2
     public int findMin(int i) {
         return min[root(i)];
     }
@@ -69,5 +79,6 @@ public class QuickUnionImpUF extends UnionFind {
             id[qid] = pid;
             sz[pid] += sz[qid];
         }
+        count--;
     }
 }
