@@ -9,6 +9,7 @@ public class QuickUnionImpUF extends UnionFind {
     private int[] sz;
     private int[] max;
     private int[] min;
+    private int[] base;
 
     public QuickUnionImpUF(int N) {
         super(N);
@@ -16,6 +17,7 @@ public class QuickUnionImpUF extends UnionFind {
         Arrays.fill(sz, 1);
         max = id.clone();
         min = id.clone();
+        base = id.clone();
     }
 
     // ABS Path Comp
@@ -38,6 +40,16 @@ public class QuickUnionImpUF extends UnionFind {
             i = id[i];
         }
         return i;
+    }
+
+    // TC: O(log*n)
+    public int successor(int i) {
+        return base[root(++i)];
+    }
+
+    // TC: O(log*n)
+    public void remove(int i) {
+        union(i++, i);
     }
 
     // TC: O(log*n)/2
@@ -78,6 +90,7 @@ public class QuickUnionImpUF extends UnionFind {
         } else {
             id[qid] = pid;
             sz[pid] += sz[qid];
+            base[pid] = base[qid];
         }
         count--;
     }
