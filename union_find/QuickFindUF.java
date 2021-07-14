@@ -23,6 +23,6 @@ public class QuickFindUF extends UnionFind {
             if (id[i] == id[p] || id[i] == id[q]) {
                 sz[i] = newSetSize;
             }
-        }0
+        }
     }
 }
