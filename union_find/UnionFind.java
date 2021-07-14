@@ -39,9 +39,8 @@ public abstract class UnionFind {
     }
 
     public void validate(int p) {
-        int n = id.length;
-        if (p < 0 || p >= n) {
-            throw new IllegalArgumentException("Index " + p + " is not invalid.");
+        if (p < 0 || p >= N) {
+            throw new IllegalArgumentException("Index " + p + " is invalid.");
         }
     }
 
