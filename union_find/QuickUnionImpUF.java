@@ -5,10 +5,13 @@ import java.util.List;
 
 public class QuickUnionImpUF extends UnionFind {
     private int[] sz;
+    private int[] max;
+    private int[] min;
 
     public QuickUnionImpUF(int N) {
         super(N);
         sz = new int[N];
+        max = min = id.clone();
     }
 
     // ABS Path Comp
@@ -32,6 +35,14 @@ public class QuickUnionImpUF extends UnionFind {
         return i;
     }
 
+    public int findMax(int i) {
+        return max[root(i)];
+    }
+
+    public int findMin(int i) {
+        return min[root(i)];
+    }
+
     // TC: O(log(n)) - Weighted
     // TC: O(log(n)) - Path Comp
     // TC: O(log*n) - Path Comp + Weighted
@@ -47,6 +58,8 @@ public class QuickUnionImpUF extends UnionFind {
         int qid = root(q);
         if (pid == qid)
             return;
+        max[pid] = max[pid] > max[qid] ? max[pid] : max[qid];
+        min[pid] = min[pid] < min[qid] ? min[pid] : min[qid];
         if (sz[pid] < sz[qid]) {
             id[pid] = qid;
             sz[qid] += sz[pid];
