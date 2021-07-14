@@ -1,5 +1,6 @@
 package union_find;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,8 @@ public class QuickUnionImpUF extends UnionFind {
     public QuickUnionImpUF(int N) {
         super(N);
         sz = new int[N];
-        max = min = id.clone();
+        max = id.clone();
+        min = id.clone();
     }
 
     // ABS Path Comp
