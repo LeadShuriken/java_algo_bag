@@ -6,12 +6,6 @@ public class QuickUnionUF extends UnionFind {
         super(N);
     }
 
-    private int root(int i) {
-        while (i != id[i])
-            i = id[i];
-        return i;
-    }
-
     // TC: O(n)
     public boolean connected(int p, int q) {
         return root(p) == root(q);
@@ -21,6 +15,12 @@ public class QuickUnionUF extends UnionFind {
     public void union(int p, int q) {
         int pid = root(p);
         int qid = root(q);
+        int newSetSize = sz[q] + sz[p];
+        for (int i = 0; i < N; i++) {
+            if (id[i] == id[p] || id[i] == id[q]) {
+                sz[i] = newSetSize;
+            }
+        }
         id[pid] = qid;
     }
 }

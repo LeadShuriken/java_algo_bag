@@ -7,20 +7,21 @@ public class Service {
         StdInReader b = new StdInReader();
         System.out.println("Init N ..");
         int N = b.readInt();
-        // UnionFind uf = new QuickFindUF(N);
+        UnionFind uf = new QuickFindUF(N);
         // UnionFind uf = new QuickUnionUF(N);
-        QuickUnionImpUF uf = new QuickUnionImpUF(N);
+        // UnionFind uf = new QuickUnionImpUF(N);
         System.out.println("Init Commands ..");
-        // Service.quickUnionFindWorkflow(uf, b);
-        Service.removeSuccessorWorkflow(uf, b);
+        Service.quickUnionFindWorkflow(uf, b);
+        // Service.removeSuccessorWorkflow(uf, b);
     }
 
-    public static void quickUnionFindWorkflow(QuickUnionImpUF uf, StdInReader b) {
+    public static void quickUnionFindWorkflow(UnionFind uf, StdInReader b) {
         while (true) {
             try {
-                int p = b.readInt();
+                int[] pair = b.readPair();
+                int p = pair[0];
+                int q = pair[1];
                 uf.validate(p);
-                int q = b.readInt();
                 uf.validate(q);
                 long start = System.nanoTime();
                 if (!uf.connected(p, q)) {
@@ -29,9 +30,9 @@ public class Service {
                 } else {
                     System.out.printf("Connected : %d - %d for %d ns.%n", p, q, System.nanoTime() - start);
                 }
-                System.out.printf("Component Max is: %d%n", uf.findMax(q));
-                System.out.printf("Component Min is: %d%n", uf.findMin(q));
-                System.out.printf("Component Depth is: %d%n", uf.getDepth(q));
+                System.out.printf("Component Max is: %d%n", uf.findSetMax(q));
+                System.out.printf("Component Min is: %d%n", uf.findSetMin(q));
+                System.out.printf("Component Depth is: %d%n", uf.getSetDepth(q));
                 System.out.println("----------------------");
             } catch (Exception e) {
                 break;

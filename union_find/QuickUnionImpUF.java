@@ -6,18 +6,9 @@ import java.util.Arrays;
 // import java.util.List;
 
 public class QuickUnionImpUF extends UnionFind {
-    private int[] sz;
-    private int[] max;
-    private int[] min;
-    private int[] base;
 
     public QuickUnionImpUF(int N) {
         super(N);
-        sz = new int[N];
-        Arrays.fill(sz, 1);
-        max = id.clone();
-        min = id.clone();
-        base = id.clone();
     }
 
     // ABS Path Comp
@@ -33,37 +24,18 @@ public class QuickUnionImpUF extends UnionFind {
     // return i;
     // }
 
-    // TC: O(log*n)/2
-    private int root(int i) {
-        while (i != id[i]) {
-            id[i] = id[id[i]];
-            i = id[i];
-        }
-        return i;
-    }
-
     // TC: O(log*n)
     public int successor(int i) {
         return base[root(++i)];
     }
 
-    // TC: O(log*n)
-    public void remove(int i) {
-        union(i++, i);
-    }
-
     // TC: O(log*n)/2
-    public int getDepth(int i) {
-        return sz[root(i)];
-    }
-
-    // TC: O(log*n)/2
-    public int findMax(int i) {
+    public int findSetMax(int i) {
         return max[root(i)];
     }
 
     // TC: O(log*n)/2
-    public int findMin(int i) {
+    public int findSetMin(int i) {
         return min[root(i)];
     }
 

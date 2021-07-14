@@ -15,8 +15,14 @@ public class QuickFindUF extends UnionFind {
     public void union(int p, int q) {
         int pid = id[p];
         int qid = id[q];
-        for (int i = 0; i < id.length; i++)
-            if (id[i] == pid)
+        int newSetSize = sz[q] + sz[p];
+        for (int i = 0; i < N; i++) {
+            if (id[i] == pid) {
                 id[i] = qid;
+            }
+            if (id[i] == id[p] || id[i] == id[q]) {
+                sz[i] = newSetSize;
+            }
+        }0
     }
 }

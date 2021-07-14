@@ -14,9 +14,15 @@ public class StdInReader {
         return Integer.parseInt(System.console().readLine());
     }
 
+    public int[] readPair() {
+        System.out.print("Enter int pair: ");
+        String[] a = System.console().readLine().split(" ");
+        return new int[] { Integer.parseInt(a[0]), Integer.parseInt(a[1]) };
+    }
+
     public Object[] commandLineRead() {
         List<String> a = new ArrayList<>();
-        System.out.print("Enter string: ");
+        System.out.print("Enter strings: ");
         try (BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in))) {
             String readLine = "";
             while ((readLine = buffer.readLine()) != null && !readLine.trim().isEmpty()) {
