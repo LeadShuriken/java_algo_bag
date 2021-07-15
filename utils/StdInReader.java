@@ -9,18 +9,23 @@ import java.util.List;
 
 public class StdInReader {
 
-    public int readInt() {
+    public static int readInt() {
         System.out.print("Enter int: ");
         return Integer.parseInt(System.console().readLine());
     }
 
-    public int[] readPair() {
-        System.out.print("Enter int pair: ");
+    public static int[] readIntArray() {
+        System.out.print("Enter int ar: ");
         String[] a = System.console().readLine().split(" ");
-        return new int[] { Integer.parseInt(a[0]), Integer.parseInt(a[1]) };
+        int size = a.length;
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = Integer.parseInt(a[i]);
+        }
+        return arr;
     }
 
-    public Object[] commandLineRead() {
+    public static Object[] commandLineRead() {
         List<String> a = new ArrayList<>();
         System.out.print("Enter strings: ");
         try (BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in))) {

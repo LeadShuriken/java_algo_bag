@@ -4,21 +4,20 @@ import utils.StdInReader;
 
 public class Service {
     public static void main(String[] args) {
-        StdInReader b = new StdInReader();
         System.out.println("Init N ..");
-        int N = b.readInt();
+        int N = StdInReader.readInt();
         UnionFind uf = new QuickFindUF(N);
         // UnionFind uf = new QuickUnionUF(N);
         // UnionFind uf = new QuickUnionImpUF(N);
         System.out.println("Init Commands ..");
-        Service.quickUnionFindWorkflow(uf, b);
+        Service.quickUnionFindWorkflow(uf);
         // Service.removeSuccessorWorkflow(uf, b);
     }
 
-    public static void quickUnionFindWorkflow(UnionFind uf, StdInReader b) {
+    public static void quickUnionFindWorkflow(UnionFind uf) {
         while (true) {
             try {
-                int[] pair = b.readPair();
+                int[] pair = StdInReader.readIntArray();
                 int p = pair[0];
                 int q = pair[1];
                 uf.validate(p);
@@ -40,10 +39,10 @@ public class Service {
         }
     }
 
-    public static void removeSuccessorWorkflow(QuickUnionImpUF uf, StdInReader b) {
+    public static void removeSuccessorWorkflow(QuickUnionImpUF uf) {
         while (true) {
             try {
-                int p = b.readInt();
+                int p = StdInReader.readInt();
                 uf.validate(p);
                 long start = System.nanoTime();
                 uf.remove(p);
