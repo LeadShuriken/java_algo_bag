@@ -19,7 +19,7 @@ public class AimSumBrute extends AimSum {
     protected int findWithSets(int[] a, int b, int aim, int pIndex, int count, int combinedValue, int[] arr,
             List<int[]> sets) {
         for (int i = pIndex; i < a.length; i++) {
-            arr[arr.length - b] = a[i];
+            arr[arr.length - b] = i;
             if (b > 1) {
                 count = findWithSets(a, b - 1, aim, i + 1, count, combinedValue + a[i], arr, sets);
             } else if (combinedValue + a[i] == aim) {

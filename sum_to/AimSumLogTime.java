@@ -25,11 +25,11 @@ public class AimSumLogTime extends AimSum {
 
         while (l <= r) {
             if (b > 1) {
-                arr[arr.length - b] = a[l];
+                arr[arr.length - b] = l;
                 count = findWithSets(a, b - 1, aim, l + 1, count, val + a[l], arr, sets);
                 l++;
             } else {
-                arr[arr.length - b] = a[r];
+                arr[arr.length - b] = r;
                 int t = val + a[r];
                 if (t == aim) {
                     sets.add(arr.clone());
