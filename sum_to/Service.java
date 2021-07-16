@@ -1,5 +1,7 @@
 package sum_to;
 
+import java.util.Arrays;
+
 import utils.StdInReader;
 
 public class Service {
@@ -15,6 +17,10 @@ public class Service {
         int C = StdInReader.readInt();
 
         long start = System.nanoTime();
-        System.out.printf("Count : %d for %d ns.%n", ts.count(N, B, C), System.nanoTime() - start);
+        CountSetsPojo res = ts.countWithSets(N, B, C);
+        System.out.printf("Count : %d for %d ns.%n", res.getCount(), System.nanoTime() - start);
+        for (int[] i : res.getSets()) {
+            System.out.println(Arrays.toString(i));
+        }
     }
 }
