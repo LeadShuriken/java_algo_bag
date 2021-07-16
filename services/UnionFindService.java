@@ -1,8 +1,11 @@
-package union_find;
+package services;
 
+import union_find.QuickFindUF;
+import union_find.QuickUnionImpUF;
+import union_find.UnionFind;
 import utils.StdInReader;
 
-public class Service {
+public class UnionFindService {
     public static void main(String[] args) {
         System.out.println("Init N ..");
         int N = StdInReader.readInt();
@@ -10,7 +13,7 @@ public class Service {
         // UnionFind uf = new QuickUnionUF(N);
         // UnionFind uf = new QuickUnionImpUF(N);
         System.out.println("Init Commands ..");
-        Service.quickUnionFindWorkflow(uf);
+        UnionFindService.quickUnionFindWorkflow(uf);
         // Service.removeSuccessorWorkflow(uf, b);
     }
 

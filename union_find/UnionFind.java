@@ -30,9 +30,9 @@ public abstract class UnionFind {
         }
     }
 
-    abstract boolean connected(int p, int q);
+    public abstract boolean connected(int p, int q);
 
-    abstract void union(int p, int q);
+    public abstract void union(int p, int q);
 
     public int count() {
         return count;

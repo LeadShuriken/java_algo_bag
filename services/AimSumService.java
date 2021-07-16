@@ -1,10 +1,13 @@
-package sum_to;
+package services;
 
 import java.util.Arrays;
 
+import sum_to.AimSum;
+import sum_to.AimSumBrute;
+import utils.CountSetsPojo;
 import utils.StdInReader;
 
-public class Service {
+public class AimSumService {
     public static void main(String[] args) {
         AimSum ts = new AimSumBrute();
         System.out.println("Init array of ints ..");

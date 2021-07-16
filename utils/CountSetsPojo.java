@@ -1,4 +1,4 @@
-package sum_to;
+package utils;
 
 import java.util.List;
 
