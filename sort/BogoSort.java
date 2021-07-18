@@ -1,7 +1,7 @@
 package sort;
 
 public class BogoSort extends Sort {
-
+    // TC: O(nn!)
     public void sort(int[] a) {
         while (isSorted(a) == false)
             shuffle(a);

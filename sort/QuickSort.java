@@ -2,6 +2,7 @@ package sort;
 
 public class QuickSort extends Sort {
 
+    // TC: O(nlogn) => i <= O(n^2)
     public void sort(int[] arr) {
         int n = arr.length;
         quickSort(arr, 0, n - 1);
