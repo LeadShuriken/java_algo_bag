@@ -4,14 +4,21 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class StdInReader {
 
+    private StdInReader() {
+    }
+
     public static int readInt() {
         System.out.print("Enter int: ");
         return Integer.parseInt(System.console().readLine());
+    }
+
+    public static String readString() {
+        System.out.print("Enter string: ");
+        return System.console().readLine();
     }
 
     public static int[] readIntArray() {
@@ -25,24 +32,37 @@ public class StdInReader {
         return arr;
     }
 
-    public static Object[] commandLineRead() {
-        List<String> a = new ArrayList<>();
-        System.out.print("Enter strings: ");
-        try (BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in))) {
-            String readLine = "";
-            while ((readLine = buffer.readLine()) != null && !readLine.trim().isEmpty()) {
-                String[] b = readLine.split(" ");
-                if (b.length > 1) {
-                    a.addAll(Arrays.asList(b));
-                } else {
-                    a.add(readLine);
-                }
+    public static void feedString(String readLine, List<String> a) {
+        String[] b = readLine.trim().split(" ");
+        List<String> copy = new ArrayList<>();
+        for (int i = 0; i < b.length; i++) {
+            if (!b[i].equals("")) {
+                copy.add(b[i]);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        }
+        if (copy.size() > 1) {
+            a.addAll(copy);
+        } else {
+            a.add(readLine);
+        }
+    }
+
+    public static Object[] readArray(boolean fromFile) {
+        List<String> a = new ArrayList<>();
+        if (fromFile) {
+            StdInReader.feedString(StdInReader.readString(), a);
+        } else {
+            System.out.print("Enter file :");
+            try (BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in))) {
+                String readLine = "";
+                while ((readLine = buffer.readLine()) != null && !readLine.trim().isEmpty()) {
+                    StdInReader.feedString(readLine, a);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-        Object[] b = new String[a.size()];
-        return a.toArray(b);
+        return a.toArray(new Object[a.size()]);
     }
 }

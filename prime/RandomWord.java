@@ -28,8 +28,7 @@ class RandomWord {
     }
 
     public static void main(String[] args) {
-        StdInReader b = new StdInReader();
-        Object[] a = b.commandLineRead();
+        Object[] a = StdInReader.readArray(true);
         RandomWord.shuffle(a);
 
         System.out.println(a[0]);

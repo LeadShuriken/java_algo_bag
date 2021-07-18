@@ -1,25 +1,25 @@
 package sum_to;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import sort.QuickSort;
 import utils.CountSetsPojo;
 
-public class AimSumLogTime extends AimSum {
+public class AimSumImproved extends AimSum {
     // TC: O(logn)
     // T(N)=aNb (p law)
     // (b slope) (Nb order of growth)
     // (a scale of process)
     public CountSetsPojo count(int[] a, int b, int aim) {
         // n^b makes space complexity too big
-        Arrays.sort(a);
+        new QuickSort().sort(a);
         List<int[]> sets = new ArrayList<>();
         int count = findWithSets(a, b, aim, 0, 0, 0, new int[b], sets);
         return new CountSetsPojo(sets, count);
     }
 
-    // TC: O(logn) (requirement is that the array is sorted Arrays.sort() ~O(nlogn))
+    // TC: O(n^b-1+logn) (requirement is that the array is sorted ~O(nlogn))
     protected int findWithSets(int[] a, int b, int aim, int incremIndex, int count, int val, int[] arr,
             List<int[]> sets) {
         int l = incremIndex;
