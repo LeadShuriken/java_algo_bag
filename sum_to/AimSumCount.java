@@ -1,12 +1,16 @@
 package sum_to;
 
-public class AimSumCount {
+import java.util.List;
+
+import utils.CountSetsPojo;
+
+public class AimSumCount extends AimSum {
     // TC: O(n^b)
     // T(N)=aNb (p law)
     // (b slope) (Nb order of growth)
     // (a scale of process)
-    public int count(int[] a, int b, int aim) {
-        return findCount(a, b, aim, 0, 0, 0);
+    public CountSetsPojo count(int[] a, int b, int aim) {
+        return new CountSetsPojo(null, findCount(a, b, aim, 0, 0, 0));
     }
 
     // TC: O(n^b)
@@ -19,5 +23,10 @@ public class AimSumCount {
             }
         }
         return count;
+    }
+
+    protected int findWithSets(int[] a, int a_len, int b, int aim, int pIndex, int count, int combinedValue, int[] arr,
+            int arr_len, List<int[]> sets) {
+        return 0;
     }
 }

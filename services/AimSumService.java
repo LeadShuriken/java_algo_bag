@@ -11,23 +11,22 @@ import utils.StdInReader;
 
 public class AimSumService {
     public static void main(String[] args) {
-        // AimSum ts = new AimSumBrute();
-        AimSum ts = new AimSumImproved();
-        System.out.println("Init array of ints ..");
+
+        AimSum ts = new AimSumBrute();
+        // System.out.println("Init array of ints ..");
         // int[] N = StdInReader.readIntArray();
-        int[] N = new int[] { 0, -1, 1, 0, 0, 0 };
-        // -1 0 0 0 1
-        System.out.println("Init amount of elements to add for result ..");
+        int[] N = new int[] { 0, -1, 1, 1, 1, 0, 0 };
+
+        // System.out.println("Init amount of elements to add for result ..");
         // int B = StdInReader.readInt();
-        int B = 3;
-        System.out.println("Init aim result ..");
+        int B = 4;
+
+        // System.out.println("Init aim result ..");
         // int C = StdInReader.readInt();
         int C = 0;
-
-        new QuickSort().sort(N);
         long start = System.nanoTime();
         CountSetsPojo res = ts.count(N, B, C);
-        // for (int i = 0; i < 1000000; i++) {
+        // for (int i = 0; i < 10000000; i++) {
         // res = ts.count(N, B, C);
         // }
         System.out.printf("Count : %d for %d ns.%n", res.getCount(), System.nanoTime() - start);
@@ -35,23 +34,12 @@ public class AimSumService {
             System.out.println(Arrays.toString(i));
         }
 
-        ts = new AimSumBrute();
-        // AimSum ts = new AimSumImproved();
-        System.out.println("Init array of ints ..");
-        // int[] N = StdInReader.readIntArray();
-        N = new int[] { 0, -1, 1, 0, 0, 0 };
-        // -1 0 0 0 1
-        System.out.println("Init amount of elements to add for result ..");
-        // int B = StdInReader.readInt();
-        B = 3;
-        System.out.println("Init aim result ..");
-        // int C = StdInReader.readInt();
-        C = 0;
+        ts = new AimSumImproved();
+        // new QuickSort().sort(N);
 
-        new QuickSort().sort(N);
         start = System.nanoTime();
         res = ts.count(N, B, C);
-        // for (int i = 0; i < 1000000; i++) {
+        // for (int i = 0; i < 10000000; i++) {
         // res = ts.count(N, B, C);
         // }
         System.out.printf("Count : %d for %d ns.%n", res.getCount(), System.nanoTime() - start);
