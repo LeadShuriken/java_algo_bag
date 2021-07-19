@@ -20,35 +20,32 @@ public class AimSumImproved extends AimSum {
         return new CountSetsPojo(sets, count);
     }
 
-    // TC: O(n^b-2+n) (requirement is that the array is sorted ~O(nlogn))
+    private int findWithSetsPair(int[] a, int a_len, int aim, int incremIndex, int delta, int count, int[] arr,
+            int arr_len, List<int[]> sets) {
+        Map<Integer, List<Integer>> numMap = new HashMap<>();
+        for (int j = incremIndex; j < a_len; j++) {
+            int temp = aim - (a[j] + delta);
+            if (numMap.containsKey(temp)) {
+                count += addSet(numMap, temp, j, arr, arr_len, sets);
+            }
+            addComplement(numMap, a, j);
+        }
+        return count;
+    }
+
+    // TC: O((n-b-2)^b+n)
     protected int findWithSets(int[] a, int a_len, int b, int aim, int incremIndex, int count, int val, int[] arr,
             int arr_len, List<int[]> sets) {
-
         if (arr_len == 2) {
-            Map<Integer, List<Integer>> numMap = new HashMap<>();
-            for (int i = 0; i < a_len; ++i) {
-                int temp = aim - a[i];
-                if (numMap.containsKey(temp)) {
-                    count += addSet(numMap, temp, i, arr, arr_len, sets);
-                }
-                addComplement(numMap, a, i);
-            }
-            return count;
+            return findWithSetsPair(a, a_len, aim, 0, 0, count, arr, arr_len, sets);
         }
 
-        for (int i = incremIndex; i < a_len - 2; i++) {
+        for (int i = incremIndex; i < a_len - (b - 1); i++) {
             arr[arr_len - b] = i;
             if (b > 3) {
                 count = findWithSets(a, a_len, b - 1, aim, i + 1, count, val + a[i], arr, arr_len, sets);
             } else {
-                Map<Integer, List<Integer>> numMap = new HashMap<>();
-                for (int j = i + 1; j < a_len; ++j) {
-                    int temp = aim - (a[j] + a[i] + val);
-                    if (numMap.containsKey(temp)) {
-                        count += addSet(numMap, temp, j, arr, arr_len, sets);
-                    }
-                    addComplement(numMap, a, j);
-                }
+                count = findWithSetsPair(a, a_len, aim, i + 1, a[i] + val, count, arr, arr_len, sets);
             }
         }
         return count;

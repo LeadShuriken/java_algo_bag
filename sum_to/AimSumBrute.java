@@ -6,6 +6,7 @@ import java.util.List;
 import utils.CountSetsPojo;
 
 public class AimSumBrute extends AimSum {
+
     // TC: O(n^b)
     // T(N)=aNb (p law)
     // (b slope) (Nb order of growth)
@@ -17,16 +18,18 @@ public class AimSumBrute extends AimSum {
         return new CountSetsPojo(sets, count);
     }
 
-    // TC: O(n^b) (brute force)
+    // TC: O((n-b)^b) (brute force)
     protected int findWithSets(int[] a, int a_len, int b, int aim, int pIndex, int count, int combinedValue, int[] arr,
             int arr_len, List<int[]> sets) {
-        for (int i = pIndex; i < a_len; i++) {
+        for (int i = pIndex; i < a_len - (b - 1); i++) {
             arr[arr_len - b] = i;
             if (b > 1) {
                 count = findWithSets(a, a_len, b - 1, aim, i + 1, count, combinedValue + a[i], arr, arr_len, sets);
-            } else if (combinedValue + a[i] == aim) {
-                sets.add(arr.clone());
-                count++;
+            } else {
+                if (combinedValue + a[i] == aim) {
+                    sets.add(arr.clone());
+                    count++;
+                }
             }
         }
         return count;
