@@ -25,11 +25,9 @@ public class AimSumBrute extends AimSum {
             arr[arr_len - b] = i;
             if (b > 1) {
                 count = findWithSets(a, a_len, b - 1, aim, i + 1, count, combinedValue + a[i], arr, arr_len, sets);
-            } else {
-                if (combinedValue + a[i] == aim) {
-                    sets.add(arr.clone());
-                    count++;
-                }
+            } else if (combinedValue + a[i] == aim) {
+                sets.add(arr.clone());
+                count++;
             }
         }
         return count;

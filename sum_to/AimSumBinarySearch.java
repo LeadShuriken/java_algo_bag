@@ -2,7 +2,6 @@ package sum_to;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import search.BinarySearch;
 import sort.QuickSort;
@@ -28,9 +27,9 @@ public class AimSumBinarySearch extends AimSum {
             int arr_len, List<int[]> sets) {
         for (int j = incremIndex; j < a_len; j++) {
             int temp = aim - (a[j] + delta);
-            int l = s.first(a, incremIndex, j, temp);
-            if (l != -1 && l != j) {
-                count += addSet(l, j, arr, arr_len, sets);
+            int l = s.first(a, incremIndex, j - 1, temp);
+            if (l != -1) {
+                count += addSet(l, l == j - 1 ? j : s.last(a, l, j - 1, temp) + 1, arr, arr_len, sets);
             }
         }
         return count;
