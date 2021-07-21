@@ -2,7 +2,7 @@
 
 ## Description
 
-JAVA ALGO BAG is an exploration into algorithms and slim data structure runtime and general comparison of techniques used to sort, search, union, reverse, traverse (aka the drill). This repo is heavily influenced by Princeton University [Algorithms 1] and Princeton University [Algorithms 2]. Take the courses, buy the book, go faster through it if you're advanced. Absolutly worth the while.
+JAVA ALGO BAG is an exploration into algorithms and slim data structure runtime and general comparison of techniques used to sort, search, union, reverse, traverse (aka the drill). This repo is heavily influenced by Princeton University [Algorithms 1] and Princeton University [Algorithms 2]. Take the courses, buy the book, go faster through it if you're advanced. Absolutely worth the while.
 
 ## Technologies
 
