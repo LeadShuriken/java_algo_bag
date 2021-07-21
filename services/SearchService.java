@@ -7,7 +7,7 @@ import utils.StdInReader;
 
 public class SearchService {
     public static void main(String[] args) {
-        Sort sr = new QuickSort();
+        Sort sr = new BogoSort();
         // Sort sr = new BogoSort();
         System.out.println("Init array of ints ..");
         int[] N = StdInReader.readIntArray();
