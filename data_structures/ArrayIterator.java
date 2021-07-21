@@ -5,6 +5,11 @@ import java.util.Iterator;
 public class ArrayIterator<T> implements Iterable<T> {
 
     protected T[] s;
+    protected int N = 0;
+
+    public ArrayIterator() {
+        s = (T[]) new Object[1];
+    }
 
     public Iterator<T> iterator() {
         return new InnerArrayIterator();

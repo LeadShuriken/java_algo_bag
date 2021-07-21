@@ -21,7 +21,7 @@ public class AimSumService {
         // System.out.println("Init array of ints ..");
         // int[] N = StdInReader.readIntArray();
         // final int[] N = new int[] { 0, -1, 1, 0, 0, 2, -2 };
-        final int[] N = RandomUtils.randIntArray(100, -20, 50);
+        final int[] N = RandomUtils.randIntArray(1000, -20, 50);
         new QuickSort().sort(N);
 
         // int B = StdInReader.readInt();
