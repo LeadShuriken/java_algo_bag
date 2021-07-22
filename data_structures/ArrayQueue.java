@@ -1,7 +1,9 @@
 package data_structures;
 
+import data_structures.interfaces.Queue;
+import data_structures.iterators.ArrayIterator;
+
 public class ArrayQueue<T> extends ArrayIterator<T> implements Queue<T> {
-    private int N = 0;
     private int H = 0;
 
     public boolean isEmpty() {
@@ -31,6 +33,7 @@ public class ArrayQueue<T> extends ArrayIterator<T> implements Queue<T> {
             resize(s.length - H);
         else
             s[H++] = null;
+        N--;
         return item;
     }
 }

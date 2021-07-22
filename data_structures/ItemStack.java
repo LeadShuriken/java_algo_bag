@@ -1,5 +1,8 @@
 package data_structures;
 
+import data_structures.interfaces.Stack;
+import data_structures.iterators.ItemIterator;
+
 public class ItemStack<T> extends ItemIterator<T> implements Stack<T> {
 
     public boolean isEmpty() {

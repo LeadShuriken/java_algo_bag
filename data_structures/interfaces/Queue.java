@@ -1,4 +1,4 @@
-package data_structures;
+package data_structures.interfaces;
 
 public interface Queue<T> extends DataStructure, Iterable<T> {
 

@@ -1,7 +1,10 @@
 package data_structures;
 
+import data_structures.interfaces.Queue;
+import data_structures.iterators.ItemIterator;
+
 public class ItemQueue<T> extends ItemIterator<T> implements Queue<T> {
-    private Node last;
+
 
     public boolean isEmpty() {
         return first == null;

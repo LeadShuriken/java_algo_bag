@@ -1,15 +1,15 @@
-package data_structures;
+package data_structures.iterators;
 
 import java.util.Iterator;
 
 public class ItemIterator<T> implements Iterable<T> {
-
+    protected Node last = null;
     protected Node first = null;
     protected int N = 0;
 
-    protected class Node {
-        T item;
-        Node next;
+    public class Node {
+        public T item;
+        public Node next;
     }
 
     public int length() {
