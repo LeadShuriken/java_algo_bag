@@ -1,6 +1,6 @@
 package data_structures;
 
-public class ItemQueue<T> extends ItemIterator<T> {
+public class ItemQueue<T> extends ItemIterator<T> implements Queue<T> {
     private Node last;
 
     public boolean isEmpty() {
@@ -16,6 +16,7 @@ public class ItemQueue<T> extends ItemIterator<T> {
             first = last;
         else
             oldlast.next = last;
+        N++;
     }
 
     public T dequeue() {
@@ -23,6 +24,7 @@ public class ItemQueue<T> extends ItemIterator<T> {
         first = first.next;
         if (isEmpty())
             last = null;
+        N--;
         return item;
     }
 }

@@ -1,6 +1,6 @@
 package data_structures;
 
-public class ArrayStack<T> extends ArrayIterator<T> {
+public class ArrayStack<T> extends ArrayIterator<T> implements Stack<T> {
 
     public boolean isEmpty() {
         return N == 0;
@@ -20,6 +20,7 @@ public class ArrayStack<T> extends ArrayIterator<T> {
         return item;
     }
 
+    @SuppressWarnings("unchecked")
     private void resize(int capacity) {
         T[] copy = (T[]) new Object[capacity];
         for (int i = 0; i < N; i++)

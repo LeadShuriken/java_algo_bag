@@ -7,12 +7,17 @@ public class ArrayIterator<T> implements Iterable<T> {
     protected T[] s;
     protected int N = 0;
 
+    @SuppressWarnings("unchecked")
     public ArrayIterator() {
         s = (T[]) new Object[1];
     }
 
     public Iterator<T> iterator() {
         return new InnerArrayIterator();
+    }
+
+    public int length() {
+        return N;
     }
 
     private class InnerArrayIterator implements Iterator<T> {
@@ -23,7 +28,7 @@ public class ArrayIterator<T> implements Iterable<T> {
         }
 
         public boolean hasNext() {
-            return s.length > current;
+            return N > current;
         }
 
         public T next() {

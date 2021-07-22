@@ -5,10 +5,15 @@ import java.util.Iterator;
 public class ItemIterator<T> implements Iterable<T> {
 
     protected Node first = null;
+    protected int N = 0;
 
     protected class Node {
         T item;
         Node next;
+    }
+
+    public int length() {
+        return N;
     }
 
     public Iterator<T> iterator() {

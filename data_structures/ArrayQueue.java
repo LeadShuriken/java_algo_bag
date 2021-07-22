@@ -1,6 +1,6 @@
 package data_structures;
 
-public class ArrayQueue<T> extends ArrayIterator<T> {
+public class ArrayQueue<T> extends ArrayIterator<T> implements Queue<T> {
     private int N = 0;
     private int H = 0;
 
@@ -14,6 +14,7 @@ public class ArrayQueue<T> extends ArrayIterator<T> {
         s[N++] = item;
     }
 
+    @SuppressWarnings("unchecked")
     private void resize(int capacity) {
         T[] copy = (T[]) new Object[capacity - H];
         N -= H;
