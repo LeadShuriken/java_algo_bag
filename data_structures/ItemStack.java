@@ -5,10 +5,6 @@ import data_structures.iterators.ItemIterator;
 
 public class ItemStack<T> extends ItemIterator<T> implements Stack<T> {
 
-    public boolean isEmpty() {
-        return first == null;
-    }
-
     public void push(T item) {
         N++;
         Node oldfirst = first;
@@ -22,5 +18,9 @@ public class ItemStack<T> extends ItemIterator<T> implements Stack<T> {
         T item = first.item;
         first = first.next;
         return item;
+    }
+
+    public T peek() {
+        return first.item;
     }
 }

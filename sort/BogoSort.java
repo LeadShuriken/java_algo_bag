@@ -1,27 +1,29 @@
 package sort;
 
-public class BogoSort extends Sort {
+import sort.interfaces.IntArraySort;
+import sort.interfaces.ObjectArraySort;
+
+public class BogoSort extends SortUtils implements IntArraySort, ObjectArraySort {
     // TC: O(nn!)
     public void sort(int[] a) {
-        while (isSorted(a) == false)
-            shuffle(a);
+        int N = a.length;
+        while (isSorted(a, 0, N) == false)
+            shuffle(a, 0, N);
     }
 
-    void shuffle(int[] a) {
-        for (int i = 0; i < a.length; i++)
+    public <T extends Comparable<T>> void sort(T[] a) {
+        int N = a.length;
+        while (isSorted(a, 0, N) == false)
+            shuffle(a, 0, N);
+    }
+
+    private void shuffle(int[] a, int b, int c) {
+        for (int i = b; i < c; i++)
             swap(a, i, (int) (Math.random() * i));
     }
 
-    void swap(int[] a, int i, int j) {
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-    }
-
-    boolean isSorted(int[] a) {
-        for (int i = 1; i < a.length; i++)
-            if (a[i] < a[i - 1])
-                return false;
-        return true;
+    private <T extends Comparable<T>> void shuffle(T[] a, int b, int c) {
+        for (int i = b; i < c; i++)
+            swap(a, i, (int) (Math.random() * i));
     }
 }

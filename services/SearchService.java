@@ -1,19 +1,23 @@
 package services;
 
-import sort.Sort;
+import search.BinarySearch;
+import search.Search;
 import sort.QuickSort;
-import sort.BogoSort;
+import utils.RandomUtils;
 import utils.StdInReader;
 
 public class SearchService {
     public static void main(String[] args) {
-        Sort sr = new BogoSort();
-        // Sort sr = new BogoSort();
         System.out.println("Init array of ints ..");
-        int[] N = StdInReader.readIntArray();
+        // int[] N = StdInReader.readIntArray();
+        int[] N = RandomUtils.randIntArray(100000000);
+
+        Search bs = new BinarySearch();
+        int s = N[RandomUtils.randomInt(0, N.length - 1)];
+        new QuickSort().sort(N);
 
         long start = System.nanoTime();
-        sr.sort(N);
-        System.out.printf("Array of %d elements sorted in %d ns.%n", N.length, System.nanoTime() - start);
+        System.out.printf("Element %d from array of %d elements found in %d ns.%n", bs.search(N, s), N.length,
+                System.nanoTime() - start);
     }
 }

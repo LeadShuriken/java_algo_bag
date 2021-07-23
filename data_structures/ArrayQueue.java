@@ -6,10 +6,6 @@ import data_structures.iterators.ArrayIterator;
 public class ArrayQueue<T> extends ArrayIterator<T> implements Queue<T> {
     private int H = 0;
 
-    public boolean isEmpty() {
-        return N == 0;
-    }
-
     public void enqueue(T item) {
         if (N == s.length)
             resize(2 * N);

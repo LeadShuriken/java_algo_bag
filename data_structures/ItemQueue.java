@@ -5,11 +5,6 @@ import data_structures.iterators.ItemIterator;
 
 public class ItemQueue<T> extends ItemIterator<T> implements Queue<T> {
 
-
-    public boolean isEmpty() {
-        return first == null;
-    }
-
     public void enqueue(T item) {
         Node oldlast = last;
         last = new Node();

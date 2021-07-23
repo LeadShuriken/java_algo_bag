@@ -1,13 +1,14 @@
 package services;
 
-import sort.Sort;
+import sort.interfaces.IntArraySort;
+
 import sort.QuickSort;
 import sort.BogoSort;
 import utils.StdInReader;
 
 public class SortService {
     public static void main(String[] args) {
-        Sort sr = new QuickSort();
+        IntArraySort sr = new QuickSort();
         // Sort sr = new BogoSort();
         System.out.println("Init array of ints ..");
         int[] N = StdInReader.readIntArray();

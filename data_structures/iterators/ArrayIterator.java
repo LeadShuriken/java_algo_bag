@@ -7,6 +7,10 @@ public class ArrayIterator<T> implements Iterable<T> {
     protected T[] s;
     protected int N = 0;
 
+    public boolean isEmpty() {
+        return N == 0;
+    }
+
     @SuppressWarnings("unchecked")
     public ArrayIterator() {
         s = (T[]) new Object[1];

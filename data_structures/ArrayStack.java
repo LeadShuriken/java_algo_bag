@@ -5,10 +5,6 @@ import data_structures.iterators.ArrayIterator;
 
 public class ArrayStack<T> extends ArrayIterator<T> implements Stack<T> {
 
-    public boolean isEmpty() {
-        return N == 0;
-    }
-
     public void push(T item) {
         if (N == s.length)
             resize(2 * N);
@@ -21,6 +17,10 @@ public class ArrayStack<T> extends ArrayIterator<T> implements Stack<T> {
         if (N > 0 && N == s.length / 4)
             resize(s.length / 2);
         return item;
+    }
+
+    public T peek() {
+        return s[N - 1];
     }
 
     @SuppressWarnings("unchecked")

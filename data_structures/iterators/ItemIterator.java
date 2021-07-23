@@ -7,6 +7,10 @@ public class ItemIterator<T> implements Iterable<T> {
     protected Node first = null;
     protected int N = 0;
 
+    public boolean isEmpty() {
+        return first == null;
+    }
+
     public class Node {
         public T item;
         public Node next;
