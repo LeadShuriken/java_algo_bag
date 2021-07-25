@@ -27,4 +27,14 @@ public class RandomUtils {
     public static int randomInt(int min, int max) {
         return new Random().nextInt((max - min) + 1) + min;
     }
+
+    public static void shuffle(int[] a) {
+        int N = a.length;
+        for (int i = 0; i < N; i++) {
+            int r = RandomUtils.randomInt(0, i + 1);
+            int temp = a[i];
+            a[i] = a[r];
+            a[r] = temp;
+        }
+    }
 }

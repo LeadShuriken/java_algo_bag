@@ -17,7 +17,6 @@ public class QuickSort extends SortUtils implements IntArraySort, ObjectArraySor
     }
 
     int partition(int[] arr, int low, int high) {
-
         int pivot = arr[high];
 
         int i = (low - 1);
