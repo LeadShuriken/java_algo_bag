@@ -1,17 +1,20 @@
 package intersection;
 
-import intersection.interfaces.IntArrayIntersection;
-import intersection.interfaces.ObjectArrayIntersection;
-import sort.QuickSort;
-import sort.interfaces.IntArraySort;
-import sort.interfaces.ObjectArraySort;
+import java.util.Comparator;
 
-public class IntersectionCount implements IntArrayIntersection, ObjectArrayIntersection {
+import comparator.GenericComparator;
+
+import sort.interfaces.Sort;
+import sort.QuickSort;
+
+public class IntersectionCount {
 
     public <T extends Comparable<T>> int countIntersection(T[] a, T[] b) {
-        ObjectArraySort sr = new QuickSort();
-        sr.sort(a);
-        sr.sort(b);
+        Sort<T> sr = new QuickSort<>();
+        Comparator<T> comp = new GenericComparator<>();
+
+        sr.sort(a, comp);
+        sr.sort(b, comp);
 
         int i = 0;
         int j = 0;
@@ -23,28 +26,6 @@ public class IntersectionCount implements IntArrayIntersection, ObjectArrayInter
                 i++;
                 j++;
             } else if (a[i].compareTo(b[j]) < 0)
-                i++;
-            else
-                j++;
-        }
-        return count;
-    }
-
-    public int countIntersection(int[] a, int[] b) {
-        IntArraySort sr = new QuickSort();
-        sr.sort(a);
-        sr.sort(b);
-
-        int i = 0;
-        int j = 0;
-        int count = 0;
-
-        while (i < a.length && j < b.length) {
-            if (a[i] == b[j]) {
-                count++;
-                i++;
-                j++;
-            } else if (a[i] < b[j])
                 i++;
             else
                 j++;

@@ -1,33 +1,23 @@
 package sort;
 
-import sort.interfaces.IntArraySort;
-import sort.interfaces.ObjectArraySort;
+import java.util.Comparator;
 
-public class SelectSort extends SortUtils implements ObjectArraySort, IntArraySort {
+import sort.interfaces.Sort;
 
-    public void sort(int[] a) {
+public class SelectSort<T> extends SortUtils<T> implements Sort<T> {
+
+    public void sort(T[] a, Comparator<? super T> b) {
         int N = a.length;
         for (int i = 0; i < N; i++) {
             int min = i;
             for (int j = i + 1; j < N; j++)
-                if (less(a[j], a[min]))
+                if (less(a[j], a[min], b))
                     min = j;
             swap(a, i, min);
         }
     }
 
-    public <T extends Comparable<T>> void sort(T[] a) {
-        int N = a.length;
-        for (int i = 0; i < N; i++) {
-            int min = i;
-            for (int j = i + 1; j < N; j++)
-                if (less(a[j], a[min]))
-                    min = j;
-            swap(a, i, min);
-        }
-    }
-
-    private void printSort(int[] a) {
+    private void printSort(T[] a, Comparator<? super T> b) {
         int N = a.length;
         System.out.println();
         System.out.print("i ");
@@ -44,13 +34,13 @@ public class SelectSort extends SortUtils implements ObjectArraySort, IntArraySo
                 if (x == i) {
                     System.out.print("x  ");
                 } else {
-                    System.out.print(a[x] + (a[x] >= 10 ? " " : "  "));
+                    System.out.print(a[x] + (a[x].toString().length() >= 1 ? " " : "  "));
                 }
                 System.out.print(x >= 10 ? " " : "");
             }
 
             for (int j = i + 1; j < N; j++) {
-                if (less(a[j], a[min])) {
+                if (less(a[j], a[min], b)) {
                     min = j;
                 }
             }

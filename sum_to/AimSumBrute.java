@@ -3,7 +3,7 @@ package sum_to;
 import java.util.ArrayList;
 import java.util.List;
 
-import utils.CountSetsPojo;
+import pojos.CountSetsPojo;
 
 public class AimSumBrute extends AimSum {
 
@@ -11,7 +11,7 @@ public class AimSumBrute extends AimSum {
     // T(N)=aNb (p law)
     // (b slope) (Nb order of growth)
     // (a scale of process)
-    public CountSetsPojo count(int[] a, int b, int aim) {
+    public CountSetsPojo count(Integer[] a, int b, int aim) {
         // n^b makes space complexity too big
         List<int[]> sets = new ArrayList<>();
         int count = findWithSets(a, a.length, b, aim, 0, 0, 0, new int[b], b, sets);
@@ -19,8 +19,8 @@ public class AimSumBrute extends AimSum {
     }
 
     // TC: O((n-b)^b) (brute force)
-    protected int findWithSets(int[] a, int a_len, int b, int aim, int pIndex, int count, int combinedValue, int[] arr,
-            int arr_len, List<int[]> sets) {
+    protected int findWithSets(Integer[] a, int a_len, int b, int aim, int pIndex, int count, int combinedValue,
+            int[] arr, int arr_len, List<int[]> sets) {
         for (int i = pIndex; i < a_len - (b - 1); i++) {
             arr[arr_len - b] = i;
             if (b > 1) {

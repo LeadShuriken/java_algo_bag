@@ -1,28 +1,10 @@
 package union_find;
 
-import java.util.Arrays;
-
-// import java.util.ArrayList;
-// import java.util.List;
-
 public class QuickUnionImpUF extends UnionFind {
 
     public QuickUnionImpUF(int N) {
         super(N);
     }
-
-    // ABS Path Comp
-    // private int root(int i) {
-    // List<Integer> temp = new ArrayList<>();
-    // while (i != id[i]) {
-    // temp.add(i);
-    // i = id[i];
-    // }
-    // for (Integer integer : temp) {
-    // id[integer] = i;
-    // }
-    // return i;
-    // }
 
     // TC: O(log*n)
     public int successor(int i) {

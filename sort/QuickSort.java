@@ -1,46 +1,24 @@
 package sort;
 
-import sort.interfaces.IntArraySort;
-import sort.interfaces.ObjectArraySort;
+import java.util.Comparator;
 
-public class QuickSort extends SortUtils implements IntArraySort, ObjectArraySort {
+import sort.interfaces.Sort;
+
+public class QuickSort<T> extends SortUtils<T> implements Sort<T> {
 
     // TC: O(nlogn) => i <= O(n^2)
-    public void sort(int[] arr) {
-        int n = arr.length;
-        quickSort(arr, 0, n - 1);
-    }
-
-    public <T extends Comparable<T>> void sort(T[] a) {
+    public void sort(T[] a, Comparator<? super T> b) {
         int n = a.length;
-        quickSort(a, 0, n - 1);
+        quickSort(a, 0, n - 1, b);
     }
 
-    int partition(int[] arr, int low, int high) {
-        int pivot = arr[high];
-
-        int i = (low - 1);
-
-        for (int j = low; j <= high - 1; j++) {
-
-            if (arr[j] < pivot) {
-                i++;
-                swap(arr, i, j);
-            }
-        }
-        swap(arr, i + 1, high);
-        return (i + 1);
-    }
-
-    private <T extends Comparable<T>> int partition(T[] arr, int low, int high) {
-
+    private int partition(T[] arr, int low, int high, Comparator<? super T> b) {
         T pivot = arr[high];
 
         int i = (low - 1);
 
         for (int j = low; j <= high - 1; j++) {
-
-            if (arr[j].compareTo(pivot) < 0) {
+            if (b.compare(arr[j], pivot) < 0) {
                 i++;
                 swap(arr, i, j);
             }
@@ -49,23 +27,13 @@ public class QuickSort extends SortUtils implements IntArraySort, ObjectArraySor
         return (i + 1);
     }
 
-    private void quickSort(int[] arr, int low, int high) {
+    private void quickSort(T[] arr, int low, int high, Comparator<? super T> b) {
         if (low < high) {
 
-            int pi = partition(arr, low, high);
+            int pi = partition(arr, low, high, b);
 
-            quickSort(arr, low, pi - 1);
-            quickSort(arr, pi + 1, high);
-        }
-    }
-
-    private <T extends Comparable<T>> void quickSort(T[] arr, int low, int high) {
-        if (low < high) {
-
-            int pi = partition(arr, low, high);
-
-            quickSort(arr, low, pi - 1);
-            quickSort(arr, pi + 1, high);
+            quickSort(arr, low, pi - 1, b);
+            quickSort(arr, pi + 1, high, b);
         }
     }
 }

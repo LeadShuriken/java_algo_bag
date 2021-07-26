@@ -1,4 +1,4 @@
-package utils;
+package pojos;
 
 public class TestPojo {
     private int someNumber;

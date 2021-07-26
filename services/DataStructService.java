@@ -7,8 +7,7 @@ import data_structures.ItemStack;
 
 import data_structures.interfaces.Queue;
 import data_structures.interfaces.Stack;
-
-import utils.TestPojo;
+import pojos.TestPojo;
 
 public class DataStructService {
     public static void main(String[] args) {

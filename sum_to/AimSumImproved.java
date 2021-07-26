@@ -5,14 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import utils.CountSetsPojo;
+import pojos.CountSetsPojo;
 
 public class AimSumImproved extends AimSum {
 
     // T(N)=aNb (p law)
     // (b slope) (Nb order of growth)
     // (a scale of process)
-    public CountSetsPojo count(int[] a, int b, int aim) {
+    public CountSetsPojo count(Integer[] a, int b, int aim) {
         // n^b makes space complexity too big
         assert (a.length >= 2);
         List<int[]> sets = new ArrayList<>();
@@ -20,7 +20,7 @@ public class AimSumImproved extends AimSum {
         return new CountSetsPojo(sets, count);
     }
 
-    private int findWithSetsPair(int[] a, int a_len, int aim, int incremIndex, int delta, int count, int[] arr,
+    private int findWithSetsPair(Integer[] a, int a_len, int aim, int incremIndex, int delta, int count, int[] arr,
             int arr_len, List<int[]> sets) {
         Map<Integer, List<Integer>> numMap = new HashMap<>();
         for (int j = incremIndex; j < a_len; j++) {
@@ -34,7 +34,7 @@ public class AimSumImproved extends AimSum {
     }
 
     // TC: O((n-b-2)^b+n)
-    protected int findWithSets(int[] a, int a_len, int b, int aim, int incremIndex, int count, int val, int[] arr,
+    protected int findWithSets(Integer[] a, int a_len, int b, int aim, int incremIndex, int count, int val, int[] arr,
             int arr_len, List<int[]> sets) {
         if (arr_len == 2) {
             return findWithSetsPair(a, a_len, aim, 0, 0, count, arr, arr_len, sets);
@@ -61,7 +61,7 @@ public class AimSumImproved extends AimSum {
         return indexCom.size();
     }
 
-    private void addComplement(Map<Integer, List<Integer>> numMap, int[] a, int j) {
+    private void addComplement(Map<Integer, List<Integer>> numMap, Integer[] a, int j) {
         if (numMap.containsKey(a[j])) {
             numMap.get(a[j]).add(j);
         } else {

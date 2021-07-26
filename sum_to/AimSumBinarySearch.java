@@ -3,8 +3,8 @@ package sum_to;
 import java.util.ArrayList;
 import java.util.List;
 
+import pojos.CountSetsPojo;
 import search.BinarySearch;
-import utils.CountSetsPojo;
 
 public class AimSumBinarySearch extends AimSum {
 
@@ -13,7 +13,7 @@ public class AimSumBinarySearch extends AimSum {
     // T(N)=aNb (p law)
     // (b slope) (Nb order of growth)
     // (a scale of process)
-    public CountSetsPojo count(int[] a, int b, int aim) {
+    public CountSetsPojo count(Integer[] a, int b, int aim) {
         // n^b makes space complexity too big
         assert (a.length >= 2);
         s = new BinarySearch();
@@ -22,7 +22,7 @@ public class AimSumBinarySearch extends AimSum {
         return new CountSetsPojo(sets, count);
     }
 
-    private int findWithSetsPair(int[] a, int a_len, int aim, int incremIndex, int delta, int count, int[] arr,
+    private int findWithSetsPair(Integer[] a, int a_len, int aim, int incremIndex, int delta, int count, int[] arr,
             int arr_len, List<int[]> sets) {
         for (int j = incremIndex; j < a_len; j++) {
             int temp = aim - (a[j] + delta);
@@ -35,7 +35,7 @@ public class AimSumBinarySearch extends AimSum {
     }
 
     // TC: O((n-b-2)^b+n)
-    protected int findWithSets(int[] a, int a_len, int b, int aim, int incremIndex, int count, int val, int[] arr,
+    protected int findWithSets(Integer[] a, int a_len, int b, int aim, int incremIndex, int count, int val, int[] arr,
             int arr_len, List<int[]> sets) {
         if (arr_len == 2) {
             return findWithSetsPair(a, a_len, aim, 0, 0, count, arr, arr_len, sets);

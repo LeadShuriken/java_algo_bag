@@ -1,10 +1,12 @@
 package sort;
 
-import sort.interfaces.IntArraySort;
+import java.util.Comparator;
 
-public class ShellSort extends SortUtils implements IntArraySort {
+import sort.interfaces.Sort;
 
-    public void sort(int[] a) {
+public class ShellSort<T> extends SortUtils<T> implements Sort<T> {
+
+    public void sort(T[] a, Comparator<? super T> b) {
         int N = a.length;
         int h = 1;
         while (h < N / 3)
@@ -12,7 +14,7 @@ public class ShellSort extends SortUtils implements IntArraySort {
 
         while (h >= 1) {
             for (int i = 0; i < N; i++)
-                for (int j = i; j >= h && less(a[j], a[j - h]); j -= h)
+                for (int j = i; j >= h && less(a[j], a[j - h], b); j -= h)
                     swap(a, j, j - h);
             h = h / 3;
         }

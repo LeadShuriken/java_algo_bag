@@ -2,6 +2,8 @@ package services;
 
 import java.util.Arrays;
 
+import comparator.GenericComparator;
+import pojos.CountSetsPojo;
 import sort.QuickSort;
 
 import sum_to.AimSum;
@@ -10,25 +12,17 @@ import sum_to.AimSumBrute;
 import sum_to.AimSumCount;
 import sum_to.AimSumImproved;
 
-import utils.CountSetsPojo;
 import utils.RandomUtils;
-import utils.StdInReader;
 
 public class AimSumService {
     public static void main(String[] args) {
         final int RUN = 1;
+        final Integer[] N = RandomUtils.randIntArray(100, -20, 50);
 
-        // System.out.println("Init array of ints ..");
-        // int[] N = StdInReader.readIntArray();
-        // final int[] N = new int[] { 0, -1, 1, 0, 0, 2, -2 };
-        final int[] N = RandomUtils.randIntArray(1000, -20, 50);
-        new QuickSort().sort(N);
+        new QuickSort<Integer>().sort(N, new GenericComparator<>());
 
-        // int B = StdInReader.readInt();
-        final int B = 5;
+        final int B = 3;
 
-        // System.out.println("Init aim result ..");
-        // int C = StdInReader.readInt();
         final int C = 0;
         AimSum ts = new AimSumCount();
         long start = System.nanoTime();

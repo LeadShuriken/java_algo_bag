@@ -1,21 +1,23 @@
 package sort;
 
-import sort.interfaces.IntArraySort;
+import java.util.Comparator;
 
-public class InsertionSort extends SortUtils implements IntArraySort {
+import sort.interfaces.Sort;
 
-    public void sort(int[] a) {
+public class InsertionSort<T> extends SortUtils<T> implements Sort<T> {
+
+    public void sort(T[] a, Comparator<? super T> b) {
         int N = a.length;
         for (int i = 0; i < N; i++) {
             for (int j = i; j > 0; j--)
-                if (less(a[j], a[j - 1]))
+                if (less(a[j], a[j - 1], b))
                     swap(a, j, j - 1);
                 else
                     break;
         }
     }
 
-    private void printSort(int[] a) {
+    private void printSort(T[] a, Comparator<? super T> b) {
         int N = a.length;
         System.out.println();
         System.out.print(" j");
@@ -28,7 +30,7 @@ public class InsertionSort extends SortUtils implements IntArraySort {
         for (int i = 0; i < N; i++) {
             System.out.print(i + (i >= 10 ? "  " : "   "));
             for (int j = i; j > 0; j--) {
-                if (less(a[j], a[j - 1])) {
+                if (less(a[j], a[j - 1], b)) {
                     swap(a, j, j - 1);
                 } else {
                     break;
@@ -38,7 +40,7 @@ public class InsertionSort extends SortUtils implements IntArraySort {
                 if (n == i) {
                     System.out.print("x  ");
                 } else {
-                    System.out.print(a[n] + (a[n] >= 10 ? " " : "  "));
+                    System.out.print(a[n] + (a[n].toString().length() >= 1 ? " " : "  "));
                 }
                 System.out.print(n >= 10 ? " " : "");
             }
