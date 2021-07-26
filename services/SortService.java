@@ -7,26 +7,30 @@ import sort.SelectSort;
 import sort.ShellSort;
 import sort.BogoSort;
 import sort.InsertionSort;
+import sort.BogoSort;
+import sort.MergeSort;
+
 import utils.RandomUtils;
 import utils.StdInReader;
 
 public class SortService {
     public static void main(String[] args) {
+
         IntArraySort sr = new ShellSort();
         // sr = new SelectSort();
         // sr = new InsertionSort();
         // sr = new ShellSort();
         // sr = new QuickSort();
         // sr = new BogoSort();
+        // sr = new MergeSort();
 
         // System.out.println("Init array of ints ..");
         // int[] N = StdInReader.readIntArray();
 
-        long start = System.nanoTime();
-        int[] N = RandomUtils.randIntArray(10000, 0, 5000);
+        int[] N = RandomUtils.randIntArray(1000, 0, 1000);
         int[] R = N.clone();
 
-        start = System.nanoTime();
+        long start = System.nanoTime();
         for (int i = 0; i < N.length; i++) {
             sr.sort(N);
             if (!sr.isSorted(N, 0, N.length)) {
