@@ -14,6 +14,14 @@ public abstract class SortUtils {
         a[j] = temp;
     }
 
+    protected <T extends Comparable<T>> boolean less(T v, T w) {
+        return v.compareTo(w) < 0;
+    }
+
+    protected boolean less(int v, int w) {
+        return v < w;
+    }
+
     public boolean isSorted(int[] a, int b, int c) {
         for (int i = b + 1; i < c; i++)
             if (a[i] < a[i - 1])
