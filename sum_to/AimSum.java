@@ -2,12 +2,13 @@ package sum_to;
 
 import java.util.List;
 
-import pojos.CountSetsPojo;
+import accessors.Accessor;
+import pojos.CountSets;
 
-public abstract class AimSum {
+public abstract class AimSum<T> {
 
-    public abstract CountSetsPojo count(Integer[] a, int b, int aim);
+    public abstract CountSets count(T[] a, int b, double aim, Accessor<T> accessor);
 
-    protected abstract int findWithSets(Integer[] a, int a_len, int b, int aim, int pIndex, int count,
-            int combinedValue, int[] arr, int arr_len, List<int[]> sets);
+    protected abstract int findWithSets(T[] a, int a_len, int b, double aim, int pIndex, int count,
+            double combinedValue, int[] arr, int arr_len, List<int[]> sets);
 }

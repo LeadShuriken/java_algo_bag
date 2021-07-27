@@ -2,11 +2,11 @@ package pojos;
 
 import java.util.List;
 
-public class CountSetsPojo {
+public class CountSets {
     private List<int[]> sets;
-    private int count;
+    private long count;
 
-    public CountSetsPojo(List<int[]> sets, int count) {
+    public CountSets(List<int[]> sets, long count) {
         this.sets = sets;
         this.count = count;
     }
@@ -19,7 +19,7 @@ public class CountSetsPojo {
         this.sets = sets;
     }
 
-    public int getCount() {
+    public long getCount() {
         return count;
     }
 

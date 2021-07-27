@@ -3,7 +3,6 @@ package intersection;
 import java.util.Comparator;
 
 import comparator.ComparableComparator;
-
 import sort.interfaces.Sort;
 import sort.QuickSort;
 

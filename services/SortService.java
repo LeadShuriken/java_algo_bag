@@ -1,18 +1,18 @@
 package services;
 
-import sort.QuickSort;
+import sort.interfaces.Sort;
+
+import sort.InsertionSort;
 import sort.SelectSort;
 import sort.ShellSort;
-import sort.interfaces.Sort;
+import sort.MergeSort;
+import sort.BogoSort;
+import sort.BogoSort;
+import sort.QuickSort;
 
 import java.util.Comparator;
 
 import comparator.ComparableComparator;
-
-import sort.InsertionSort;
-import sort.BogoSort;
-import sort.BogoSort;
-import sort.MergeSort;
 
 import utils.RandomUtils;
 import utils.StdInReader;
