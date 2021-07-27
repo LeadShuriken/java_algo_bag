@@ -1,6 +1,6 @@
 package services;
 
-import comparator.GenericComparator;
+import comparator.ComparableComparator;
 import search.BinarySearch;
 import search.Search;
 import sort.QuickSort;
@@ -12,13 +12,13 @@ public class SearchService {
         // int[] N = StdInReader.readIntArray();
         Integer[] N = RandomUtils.randIntArray(100000);
 
-        Search bs = new BinarySearch();
+        Search<Integer> bs = new BinarySearch<>();
         int s = N[RandomUtils.randomInt(0, N.length - 1)];
 
-        new QuickSort<Integer>().sort(N, new GenericComparator<>());
+        new QuickSort<Integer>().sort(N, 0, N.length, new ComparableComparator<>());
 
         long start = System.nanoTime();
-        System.out.printf("Element %d from array of %d elements found in %d ns.%n", bs.search(N, s), N.length,
-                System.nanoTime() - start);
+        System.out.printf("Element %d from array of %d elements found in %d ns.%n",
+                bs.search(N, s, new ComparableComparator<>()), N.length, System.nanoTime() - start);
     }
 }

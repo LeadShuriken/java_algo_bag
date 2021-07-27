@@ -1,8 +1,6 @@
 package services;
 
-import java.util.Arrays;
-
-import comparator.GenericComparator;
+import comparator.ComparableComparator;
 import pojos.CountSetsPojo;
 import sort.QuickSort;
 
@@ -16,10 +14,10 @@ import utils.RandomUtils;
 
 public class AimSumService {
     public static void main(String[] args) {
-        final int RUN = 1;
+        final int RUN = 10;
         final Integer[] N = RandomUtils.randIntArray(100, -20, 50);
 
-        new QuickSort<Integer>().sort(N, new GenericComparator<>());
+        new QuickSort<Integer>().sort(N, 0, N.length, new ComparableComparator<>());
 
         final int B = 3;
 

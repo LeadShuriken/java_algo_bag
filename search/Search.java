@@ -1,14 +1,16 @@
 package search;
 
-public abstract class Search {
+import java.util.Comparator;
 
-    public abstract <T extends Comparable<T>> int search(T[] a, T b);
+public abstract class Search<T> {
 
-    public abstract <T extends Comparable<T>> int first(T arr[], int l, int r, T key);
+    public abstract int search(T[] a, T b, Comparator<? super T> d);
 
-    public abstract <T extends Comparable<T>> int last(T arr[], int l, int r, T key);
+    public abstract int first(T arr[], int l, int r, T key, Comparator<? super T> d);
 
-    public abstract <T extends Comparable<T>> int leastgreater(T arr[], int l, int r, T key);
+    public abstract int last(T arr[], int l, int r, T key, Comparator<? super T> d);
 
-    public abstract <T extends Comparable<T>> int greatestlesser(T arr[], int l, int r, T key);
+    public abstract int leastgreater(T arr[], int l, int r, T key, Comparator<? super T> d);
+
+    public abstract int greatestlesser(T arr[], int l, int r, T key, Comparator<? super T> d);
 }

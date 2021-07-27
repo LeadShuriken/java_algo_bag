@@ -4,11 +4,10 @@ import java.util.Comparator;
 
 public class SelectSort<T> extends SortAbst<T> {
 
-    public void sort(T[] a, Comparator<? super T> b) {
-        int N = a.length;
-        for (int i = 0; i < N; i++) {
+    public void sort(T[] a, int lo, int hi, Comparator<? super T> b) {
+        for (int i = lo; i < hi; i++) {
             int min = i;
-            for (int j = i + 1; j < N; j++)
+            for (int j = i + 1; j < hi; j++)
                 if (less(a[j], a[min], b))
                     min = j;
             swap(a, i, min);

@@ -4,10 +4,9 @@ import java.util.Comparator;
 
 public class InsertionSort<T> extends SortAbst<T> {
 
-    public void sort(T[] a, Comparator<? super T> b) {
-        int N = a.length;
-        for (int i = 0; i < N; i++) {
-            for (int j = i; j > 0; j--)
+    public void sort(T[] a, int lo, int hi, Comparator<? super T> b) {
+        for (int i = lo; i < hi; i++) {
+            for (int j = i; j > lo; j--)
                 if (less(a[j], a[j - 1], b))
                     swap(a, j, j - 1);
                 else

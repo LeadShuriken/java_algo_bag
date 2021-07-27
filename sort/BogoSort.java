@@ -4,10 +4,9 @@ import java.util.Comparator;
 
 public class BogoSort<T> extends SortAbst<T> {
     // TC: O(nn!)
-    public void sort(T[] a, Comparator<? super T> b) {
-        int N = a.length;
-        while (isSorted(a, 0, N, b) == false)
-            shuffle(a, 0, N);
+    public void sort(T[] a, int lo, int hi, Comparator<? super T> b) {
+        while (isSorted(a, lo, hi, b) == false)
+            shuffle(a, lo, hi);
     }
 
     private void shuffle(T[] a, int b, int c) {

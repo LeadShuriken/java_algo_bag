@@ -7,7 +7,7 @@ import sort.interfaces.Sort;
 
 import java.util.Comparator;
 
-import comparator.GenericComparator;
+import comparator.ComparableComparator;
 
 import sort.InsertionSort;
 import sort.BogoSort;
@@ -20,7 +20,7 @@ import utils.StdInReader;
 public class SortService {
     public static void main(String[] args) {
 
-        Comparator<Integer> b = new GenericComparator<>();
+        Comparator<Integer> b = new ComparableComparator<>();
         Sort<Integer> sr = new QuickSort<>();
 
         // sr = new InsertionSort<>();
@@ -32,14 +32,15 @@ public class SortService {
         // System.out.println("Init array of ints ..");
         // int[] N = StdInReader.readIntArray();
 
-        Integer[] N = RandomUtils.randIntArray(100, 0, 1000);
+        Integer[] N = RandomUtils.randIntArray(1000, 0, 1000);
         Integer[] R = N.clone();
 
         long start = System.nanoTime();
         for (int i = 0; i < N.length; i++) {
-            sr.sort(N, b);
+            sr.sort(N, 0, N.length, b);
             if (!sr.isSorted(N, 0, N.length, b)) {
                 System.out.println("Not Sorted");
+                return;
             }
             N = R.clone();
         }

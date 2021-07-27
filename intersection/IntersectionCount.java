@@ -2,7 +2,7 @@ package intersection;
 
 import java.util.Comparator;
 
-import comparator.GenericComparator;
+import comparator.ComparableComparator;
 
 import sort.interfaces.Sort;
 import sort.QuickSort;
@@ -11,10 +11,10 @@ public class IntersectionCount {
 
     public <T extends Comparable<T>> int countIntersection(T[] a, T[] b) {
         Sort<T> sr = new QuickSort<>();
-        Comparator<T> comp = new GenericComparator<>();
+        Comparator<T> comp = new ComparableComparator<>();
 
-        sr.sort(a, comp);
-        sr.sort(b, comp);
+        sr.sort(a, 0, a.length, comp);
+        sr.sort(b, 0, a.length, comp);
 
         int i = 0;
         int j = 0;

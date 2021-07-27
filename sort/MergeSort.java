@@ -2,37 +2,45 @@ package sort;
 
 import java.util.Comparator;
 
+import sort.interfaces.Sort;
+
 public class MergeSort<T> extends SortAbst<T> {
 
-    @SuppressWarnings("unchecked")
-    public void sort(T[] a, Comparator<? super T> b) {
-        int N = a.length;
-        T[] copy = (T[]) new Object[N];
-        sort(a, copy, 0, N - 1, b);
+    private final int CUTOFF = 8;
+    private final Sort<T> SORT = new QuickSort<>();
+
+    public void sort(T[] a, int lo, int hi, Comparator<? super T> b) {
+        T[] aux = a.clone();
+        sort(aux, a, lo, hi - 1, b);
     }
 
     private void sort(T[] a, T[] aux, int lo, int hi, Comparator<? super T> b) {
-        if (hi <= lo)
+        if (hi <= lo + CUTOFF) {
+            SORT.sort(aux, lo, hi + 1, b);
             return;
+        }
         int mid = lo + (hi - lo) / 2;
-        sort(a, aux, lo, mid, b);
-        sort(a, aux, mid + 1, hi, b);
+        sort(aux, a, lo, mid, b);
+        sort(aux, a, mid + 1, hi, b);
+        if (!less(a[mid + 1], a[mid], b)) {
+            System.arraycopy(a, lo, aux, lo, hi - lo + 1);
+            return;
+        }
         merge(a, aux, lo, mid, hi, b);
     }
 
     private void merge(T[] a, T[] aux, int lo, int mid, int hi, Comparator<? super T> b) {
-        for (int k = lo; k <= hi; k++)
-            aux[k] = a[k];
+
         int i = lo, j = mid + 1;
         for (int k = lo; k <= hi; k++) {
             if (i > mid)
-                a[k] = aux[j++];
+                aux[k] = a[j++];
             else if (j > hi)
-                a[k] = aux[i++];
-            else if (less(aux[j], aux[i], b))
-                a[k] = aux[j++];
+                aux[k] = a[i++];
+            else if (less(a[j], a[i], b))
+                aux[k] = a[j++];
             else
-                a[k] = aux[i++];
+                aux[k] = a[i++];
         }
     }
 }
