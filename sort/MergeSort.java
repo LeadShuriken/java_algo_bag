@@ -2,9 +2,7 @@ package sort;
 
 import java.util.Comparator;
 
-import sort.interfaces.Sort;
-
-public class MergeSort<T> extends SortUtils<T> implements Sort<T> {
+public class MergeSort<T> extends SortAbst<T> {
 
     @SuppressWarnings("unchecked")
     public void sort(T[] a, Comparator<? super T> b) {

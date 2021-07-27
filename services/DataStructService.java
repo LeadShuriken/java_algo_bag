@@ -7,7 +7,7 @@ import data_structures.ItemStack;
 
 import data_structures.interfaces.Queue;
 import data_structures.interfaces.Stack;
-import pojos.TestPojo;
+import pojos.Point2D;
 
 public class DataStructService {
     public static void main(String[] args) {
@@ -17,26 +17,26 @@ public class DataStructService {
         final int PUSH = 100;
         final int POP = 10;
 
-        Stack<TestPojo> st = new ItemStack<>();
+        Stack<Point2D> st = new ItemStack<>();
         st = new ArrayStack<>();
 
         int count = 0;
         for (int i = 0; i < PUSH; i++) {
-            st.push(new TestPojo(i));
+            st.push(new Point2D(i, i));
             count++;
         }
         System.out.printf("%-25S : %B\n", "PUSH pass", count == PUSH);
         System.out.printf("%-25S : %B\n", "LENGTH pass", count == st.length());
 
         count = 0;
-        for (TestPojo i : st) {
-            count += i.getSomeNumber();
+        for (Point2D i : st) {
+            count += i.getX();
         }
         System.out.printf("%-25S : %B\n", "ITERATE pass", count == ((PUSH + 1) * PUSH) / 2 - PUSH);
 
         count = 0;
         for (int i = 0; i < POP; i++) {
-            count += st.pop().getSomeNumber();
+            count += st.pop().getX();
         }
 
         System.out.printf("%-25S : %B\n", "POP pass", count == (((PUSH - 1) + (PUSH - POP)) * POP) / 2);
@@ -51,26 +51,26 @@ public class DataStructService {
 
         System.out.println("------------- QUEUE ------------");
 
-        Queue<TestPojo> qu = new ItemQueue<>();
+        Queue<Point2D> qu = new ItemQueue<>();
         qu = new ArrayQueue<>();
 
         count = 0;
         for (int i = 0; i < PUSH; i++) {
-            qu.enqueue(new TestPojo(i));
+            qu.enqueue(new Point2D(i, i));
             count++;
         }
         System.out.printf("%-25S : %B\n", "PUSH pass", count == PUSH);
         System.out.printf("%-25S : %B\n", "LENGTH pass", count == qu.length());
 
         count = 0;
-        for (TestPojo i : qu) {
-            count += i.getSomeNumber();
+        for (Point2D i : qu) {
+            count += i.getX();
         }
         System.out.printf("%-25S : %B\n", "ITERATE pass", count == ((PUSH + 1) * PUSH) / 2 - PUSH);
 
         count = 0;
         for (int i = 0; i < POP; i++) {
-            count += qu.dequeue().getSomeNumber();
+            count += qu.dequeue().getX();
         }
 
         System.out.printf("%-25S : %B\n", "POP pass", count == ((POP + 1) * POP) / 2 - POP);

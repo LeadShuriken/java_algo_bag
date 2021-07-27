@@ -2,9 +2,7 @@ package sort;
 
 import java.util.Comparator;
 
-import sort.interfaces.Sort;
-
-public class QuickSort<T> extends SortUtils<T> implements Sort<T> {
+public class QuickSort<T> extends SortAbst<T> {
 
     // TC: O(nlogn) => i <= O(n^2)
     public void sort(T[] a, Comparator<? super T> b) {

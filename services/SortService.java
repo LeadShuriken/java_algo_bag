@@ -23,11 +23,11 @@ public class SortService {
         Comparator<Integer> b = new GenericComparator<>();
         Sort<Integer> sr = new QuickSort<>();
 
-        sr = new SelectSort<>();
-        sr = new InsertionSort<>();
-        sr = new ShellSort<>();
-        // sr = new BogoSort<>();
+        // sr = new InsertionSort<>();
+        // sr = new SelectSort<>();
+        // sr = new ShellSort<>();
         // sr = new MergeSort<>();
+        // sr = new BogoSort<>();
 
         // System.out.println("Init array of ints ..");
         // int[] N = StdInReader.readIntArray();

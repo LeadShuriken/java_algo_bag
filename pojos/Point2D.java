@@ -9,6 +9,14 @@ public class Point2D implements Comparable<Point2D> {
         this.y = y;
     }
 
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
     public static int isCounterClockWise(Point2D a, Point2D b, Point2D c) {
         double area2 = (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
         if (area2 < 0)
