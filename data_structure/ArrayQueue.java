@@ -1,7 +1,7 @@
-package data_structures;
+package data_structure;
 
-import data_structures.interfaces.Queue;
-import data_structures.iterators.ArrayIterator;
+import data_structure.interfaces.Queue;
+import data_structure.iterators.ArrayIterator;
 
 public class ArrayQueue<T> extends ArrayIterator<T> implements Queue<T> {
     private int H = 0;

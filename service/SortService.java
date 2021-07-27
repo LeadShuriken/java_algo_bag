@@ -1,7 +1,8 @@
-package services;
+package service;
 
 import sort.interfaces.Sort;
-
+import util.RandomUtils;
+import util.StdInReader;
 import sort.InsertionSort;
 import sort.SelectSort;
 import sort.ShellSort;
@@ -13,9 +14,6 @@ import sort.QuickSort;
 import java.util.Comparator;
 
 import comparator.ComparableComparator;
-
-import utils.RandomUtils;
-import utils.StdInReader;
 
 public class SortService {
     public static void main(String[] args) {

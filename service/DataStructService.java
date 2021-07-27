@@ -1,13 +1,12 @@
-package services;
+package service;
 
-import data_structures.ArrayQueue;
-import data_structures.ArrayStack;
-import data_structures.ItemQueue;
-import data_structures.ItemStack;
-
-import data_structures.interfaces.Queue;
-import data_structures.interfaces.Stack;
-import pojos.Point2D;
+import data_structure.ArrayQueue;
+import data_structure.ArrayStack;
+import data_structure.ItemQueue;
+import data_structure.ItemStack;
+import data_structure.interfaces.Queue;
+import data_structure.interfaces.Stack;
+import pojo.Point2D;
 
 public class DataStructService {
     public static void main(String[] args) {

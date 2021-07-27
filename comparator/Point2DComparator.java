@@ -2,7 +2,7 @@ package comparator;
 
 import java.util.Comparator;
 
-import pojos.Point2D;
+import pojo.Point2D;
 
 public class Point2DComparator implements Comparator<Point2D> {
 

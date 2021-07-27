@@ -2,8 +2,7 @@ package sum_to;
 
 import java.util.List;
 
-import accessors.Accessor;
-import pojos.CountSets;
+import accessor.Accessor;
 
 public abstract class AimSum<T> {
 

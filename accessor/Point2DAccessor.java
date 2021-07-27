@@ -1,6 +1,6 @@
-package accessors;
+package accessor;
 
-import pojos.Point2D;
+import pojo.Point2D;
 
 public class Point2DAccessor implements Accessor<Point2D> {
 

@@ -1,7 +1,7 @@
-package services;
+package service;
 
-import data_structures.ArrayStack;
-import data_structures.ItemStack;
+import data_structure.ArrayStack;
+import data_structure.ItemStack;
 import dijkstra_two_stack.DijkstraTwoStack;
 
 public class DijkstraTwoStackService {

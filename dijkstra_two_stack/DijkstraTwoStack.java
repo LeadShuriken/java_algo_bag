@@ -1,6 +1,6 @@
 package dijkstra_two_stack;
 
-import data_structures.interfaces.Stack;
+import data_structure.interfaces.Stack;
 
 public class DijkstraTwoStack {
 

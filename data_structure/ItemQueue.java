@@ -1,7 +1,7 @@
-package data_structures;
+package data_structure;
 
-import data_structures.interfaces.Queue;
-import data_structures.iterators.ItemIterator;
+import data_structure.interfaces.Queue;
+import data_structure.iterators.ItemIterator;
 
 public class ItemQueue<T> extends ItemIterator<T> implements Queue<T> {
 

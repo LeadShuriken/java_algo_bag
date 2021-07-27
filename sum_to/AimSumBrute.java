@@ -3,8 +3,7 @@ package sum_to;
 import java.util.ArrayList;
 import java.util.List;
 
-import accessors.Accessor;
-import pojos.CountSets;
+import accessor.Accessor;
 
 public class AimSumBrute<T> extends AimSum<T> {
 

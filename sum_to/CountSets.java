@@ -1,4 +1,4 @@
-package pojos;
+package sum_to;
 
 import java.util.List;
 

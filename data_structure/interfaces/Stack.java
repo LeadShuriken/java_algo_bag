@@ -1,4 +1,4 @@
-package data_structures.interfaces;
+package data_structure.interfaces;
 
 public interface Stack<T> extends DataStructure, Iterable<T> {
 

@@ -1,11 +1,11 @@
-package services;
+package service;
 
 import comparator.ComparableComparator;
 
 import search.BinarySearch;
 import search.Search;
 import sort.QuickSort;
-import utils.RandomUtils;
+import util.RandomUtils;
 
 public class SearchService {
     public static void main(String[] args) {

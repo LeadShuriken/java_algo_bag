@@ -1,7 +1,7 @@
-package data_structures;
+package data_structure;
 
-import data_structures.interfaces.Stack;
-import data_structures.iterators.ItemIterator;
+import data_structure.interfaces.Stack;
+import data_structure.iterators.ItemIterator;
 
 public class ItemStack<T> extends ItemIterator<T> implements Stack<T> {
 

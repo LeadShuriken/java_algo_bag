@@ -1,16 +1,14 @@
-package services;
+package service;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
-import accessors.Accessor;
-import accessors.Point2DAccessor;
+import accessor.Accessor;
+import accessor.Point2DAccessor;
 
 import comparator.Point2DComparator;
 
-import pojos.CountSets;
-import pojos.Point2D;
-
+import pojo.Point2D;
 import sort.QuickSort;
 
 import sum_to.AimSum;
@@ -18,9 +16,9 @@ import sum_to.AimSumBinarySearch;
 import sum_to.AimSumBrute;
 import sum_to.AimSumCount;
 import sum_to.AimSumImproved;
-// import sum_to.AimSumBinarySearch;
+import sum_to.CountSets;
 
-import utils.RandomUtils;
+import util.RandomUtils;
 
 public class AimSumService {
     public static void main(String[] args) {

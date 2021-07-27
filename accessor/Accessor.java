@@ -1,4 +1,4 @@
-package accessors;
+package accessor;
 
 public interface Accessor<T> {
     public double value(T a);

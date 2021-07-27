@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import accessors.Accessor;
-import pojos.CountSets;
+import accessor.Accessor;
 import search.BinarySearch;
 
 public class AimSumBinarySearch<T> extends AimSum<T> {

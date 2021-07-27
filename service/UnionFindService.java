@@ -1,9 +1,9 @@
-package services;
+package service;
 
 import union_find.QuickFindUF;
 import union_find.QuickUnionImpUF;
 import union_find.UnionFind;
-import utils.StdInReader;
+import util.StdInReader;
 
 public class UnionFindService {
     public static void main(String[] args) {
