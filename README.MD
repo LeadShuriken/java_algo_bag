@@ -28,6 +28,6 @@ JAVA-ALGO-BAG uses a number of open source projects:
 
   - Integrate in TSA and TSF to find outliers. 
 
-  [JAVA6]: <https://www.oracle.com/java/technologies/javase-jdk11-downloads.html>
+  [JAVA8]: <https://www.oracle.com/java/technologies/javase-jdk11-downloads.html>
   [Algorithms 1]: <https://online.princeton.edu/node/201>
   [Algorithms 2]: <https://online.princeton.edu/node/166>

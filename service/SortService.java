@@ -11,8 +11,6 @@ import sort.BogoSort;
 import sort.BogoSort;
 import sort.QuickSort;
 
-import java.util.Comparator;
-
 public class SortService {
     public static void main(String[] args) {
 
