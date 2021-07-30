@@ -2,35 +2,36 @@ package sum_to;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
-import accessor.Accessor;
+import sum_to.interfaces.AimSum;
+import sum_to.interfaces.SetCount;
 
-public class AimSumBrute<T> extends AimSum<T> {
-
-    private Accessor<T> accessor;
+public class AimSumBrute<T, R extends Function<T, Double>> extends SetCount<T, R>
+        implements AimSum<T, Double, R, CountSets> {
 
     // TC: O(n^b)
     // T(N)=aNb (p law)
     // (b slope) (Nb order of growth)
     // (a scale of process)
-    public CountSets count(T[] a, int b, double aim, Accessor<T> accessor) {
-        // n^b makes space complexity too big
-
+    public CountSets count(T[] a, int b, Double aim, R accessor) {
         this.accessor = accessor;
-        List<int[]> sets = new ArrayList<>();
+        this.a_len = a.length;
+        this.aim = aim;
+        this.arr_len = b;
 
-        int count = findWithSets(a, a.length, b, aim, 0, 0, 0, new int[b], b, sets);
-        return new CountSets(sets, count);
+        // n^b makes space complexity too big
+        this.sets = new ArrayList<>();
+        return new CountSets(this.sets, findWithSets(a, b, 0, 0, 0, new int[b]));
     }
 
     // TC: O((n-b)^b) (brute force)
-    protected int findWithSets(T[] a, int a_len, int b, double aim, int pIndex, int count, double combinedValue,
-            int[] arr, int arr_len, List<int[]> sets) {
+    protected int findWithSets(T[] a, int b, int pIndex, int count, double combinedValue, int[] arr) {
         for (int i = pIndex; i < a_len - (b - 1); i++) {
             arr[arr_len - b] = i;
-            double val = accessor.value(a[i]);
+            double val = accessor.apply(a[i]);
             if (b > 1) {
-                count = findWithSets(a, a_len, b - 1, aim, i + 1, count, combinedValue + val, arr, arr_len, sets);
+                count = findWithSets(a, b - 1, i + 1, count, combinedValue + val, arr);
             } else if (combinedValue + val == aim) {
                 sets.add(arr.clone());
                 count++;

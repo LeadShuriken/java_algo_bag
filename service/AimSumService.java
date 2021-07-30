@@ -1,21 +1,18 @@
 package service;
 
 import java.util.Arrays;
-import java.util.Comparator;
+import java.util.function.Function;
 
 import accessor.Accessor;
-import accessor.Point2DAccessor;
-
 import pojo.Point2D;
 import sort.QuickSort;
-
-import sum_to.AimSum;
 import sum_to.AimSumBinarySearch;
-import sum_to.AimSumBrute;
-import sum_to.AimSumCount;
 import sum_to.AimSumImproved;
-import sum_to.CountSets;
+import sum_to.AimSumBrute;
 
+import sum_to.AimSumCount;
+import sum_to.CountSets;
+import sum_to.interfaces.AimSum;
 import util.RandomUtils;
 
 public class AimSumService {
@@ -25,32 +22,31 @@ public class AimSumService {
 
         final Integer[] N = RandomUtils.randIntArray(COUNT, -20, 50);
         final Point2D[] ARR = new Point2D[COUNT];
-        final Accessor<Point2D> ACCESSOR = new Point2DAccessor();
 
         for (int i = 0; i < COUNT; i++) {
             ARR[i] = new Point2D(N[i], N[i]);
         }
 
-        new QuickSort<Point2D>().sort(ARR, 0, N.length, Point2D.COMP_BY_X);
+        new QuickSort<Point2D>().sort(ARR, 0, N.length, Point2D.X_ACCESSOR);
 
         final int B = 3;
-        final int C = 0;
+        final double C = 0;
 
-        AimSum<Point2D> ts = new AimSumCount<>();
+        AimSum<Point2D, Double, Function<Point2D, Double>, Long> rs = new AimSumCount<>();
 
         long start = System.nanoTime();
-        CountSets res = null;
+        long res1 = 0;
         for (int i = 0; i < RUN; i++) {
-            res = ts.count(ARR, B, C, ACCESSOR);
+            res1 = rs.count(ARR, B, C, Point2D::getX);
         }
 
-        System.out.printf("%-25S : %d for %d ns.%n", ts.getClass().getName(), res.getCount(),
-                System.nanoTime() - start);
+        System.out.printf("%-25S : %d for %d ns.%n", rs.getClass().getName(), res1, System.nanoTime() - start);
 
-        ts = new AimSumBrute<>();
+        AimSum<Point2D, Double, Function<Point2D, Double>, CountSets> ts = new AimSumBrute<>();
+        CountSets res = null;
         start = System.nanoTime();
         for (int i = 0; i < RUN; i++) {
-            res = ts.count(ARR, B, C, ACCESSOR);
+            res = ts.count(ARR, B, C, Point2D::getX);
         }
         System.out.printf("%-25S : %d for %d ns.%n", ts.getClass().getName(), res.getCount(),
                 System.nanoTime() - start);
@@ -61,7 +57,7 @@ public class AimSumService {
         ts = new AimSumImproved<>();
         start = System.nanoTime();
         for (int i = 0; i < RUN; i++) {
-            res = ts.count(ARR, B, C, ACCESSOR);
+            res = ts.count(ARR, B, C, Point2D::getX);
         }
         System.out.printf("%-25S : %d for %d ns.%n", ts.getClass().getName(), res.getCount(),
                 System.nanoTime() - start);
@@ -69,15 +65,15 @@ public class AimSumService {
         // System.out.println(Arrays.toString(i));
         // }
 
-        ts = new AimSumBinarySearch<>(Point2D.COMP_BY_X);
+        AimSum<Point2D, Double, Accessor<Point2D, Double>, CountSets> fs = new AimSumBinarySearch<>();
         start = System.nanoTime();
         for (int i = 0; i < RUN; i++) {
-            res = ts.count(ARR, B, C, ACCESSOR);
+            res = fs.count(ARR, B, C, Point2D.X_ACCESSOR);
         }
         System.out.printf("%-25S : %d for %d ns.%n", ts.getClass().getName(), res.getCount(),
                 System.nanoTime() - start);
-        // for (int[] i : res.getSets()) {
-        // System.out.println(Arrays.toString(i));
-        // }
+        // // for (int[] i : res.getSets()) {
+        // // System.out.println(Arrays.toString(i));
+        // // }
     }
 }

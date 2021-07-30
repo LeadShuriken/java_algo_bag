@@ -1,25 +1,45 @@
 package pojo;
 
-import java.util.Comparator;
+import accessor.Accessor;
 
 public class Point2D implements Comparable<Point2D> {
     private final double x;
     private final double y;
 
-    public static final Comparator<Point2D> COMP_BY_X = (Point2D a, Point2D b) -> {
-        if (a.getX() > b.getX())
-            return 1;
-        else if (a.getX() < b.getX())
-            return -1;
-        return 0;
+    public static final Accessor<Point2D, Double> X_ACCESSOR = new Accessor<>() {
+        public int compare(Point2D a, Point2D b) {
+            if (a.getX() > b.getX())
+                return 1;
+            else if (a.getX() < b.getX())
+                return -1;
+            return 0;
+        }
+
+        public Double apply(Point2D t) {
+            return t.getX();
+        }
+
+        public Point2D create(Double a) {
+            return new Point2D(a, 0);
+        }
     };
 
-    public static final Comparator<Point2D> COMP_BY_Y = (Point2D a, Point2D b) -> {
-        if (a.getY() > b.getY())
-            return 1;
-        else if (a.getY() < b.getY())
-            return -1;
-        return 0;
+    public static final Accessor<Point2D, Double> Y_ACCESSOR = new Accessor<>() {
+        public int compare(Point2D a, Point2D b) {
+            if (a.getY() > b.getY())
+                return 1;
+            else if (a.getY() < b.getY())
+                return -1;
+            return 0;
+        }
+
+        public Double apply(Point2D t) {
+            return t.getY();
+        }
+
+        public Point2D create(Double a) {
+            return new Point2D(0, a);
+        }
     };
 
     public Point2D(double x, double y) {

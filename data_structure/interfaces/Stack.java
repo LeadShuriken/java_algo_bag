@@ -2,9 +2,9 @@ package data_structure.interfaces;
 
 public interface Stack<T> extends DataStructure, Iterable<T> {
 
-    public T peek();
+    public abstract T peek();
 
-    public void push(T item);
+    public abstract void push(T item);
 
-    public T pop();
+    public abstract T pop();
 }

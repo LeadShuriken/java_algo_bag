@@ -1,68 +1,62 @@
 package sum_to;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 import accessor.Accessor;
 import search.BinarySearch;
+import sum_to.interfaces.AimSum;
+import sum_to.interfaces.SetCount;
 
-public class AimSumBinarySearch<T> extends AimSum<T> {
+public class AimSumBinarySearch<T, R extends Accessor<T, Double>> extends SetCount<T, R>
+        implements AimSum<T, Double, R, CountSets> {
 
-    private BinarySearch<T> search;
-    private Accessor<T> accessor;
-    private final Comparator<T> comparator;
-
-    public AimSumBinarySearch(Comparator<T> comparator) {
-        this.comparator = comparator;
-        this.search = new BinarySearch<>();
-    }
+    private BinarySearch<T> search = new BinarySearch<>();
 
     // T(N)=aNb (p law)
     // (b slope) (Nb order of growth)
     // (a scale of process)
-    public CountSets count(T[] a, int b, double aim, Accessor<T> accessor) {
-        // n^b makes space complexity too big
-
+    public CountSets count(T[] a, int b, Double aim, R accessor) {
         this.accessor = accessor;
+        this.a_len = a.length;
+        this.aim = aim;
+        this.arr_len = b;
 
-        List<int[]> sets = new ArrayList<>();
-        int count = findWithSets(a, a.length, b, aim, 0, 0, 0, new int[b], b, sets);
-        return new CountSets(sets, count);
+        // n^b makes space complexity too big
+        this.sets = new ArrayList<>();
+        return new CountSets(this.sets, findWithSets(a, b, 0, 0, 0, new int[b]));
     }
 
-    private int findWithSetsPair(T[] a, int a_len, double aim, int incremIndex, double delta, int count, int[] arr,
-            int arr_len, List<int[]> sets) {
+    private int findWithSetsPair(T[] a, int incremIndex, double delta, int count, int[] arr) {
         for (int j = incremIndex; j < a_len; j++) {
-            T temp = accessor.obj(aim - (accessor.value(a[j]) + delta));
-            int l = search.first(a, incremIndex, j - 1, temp, comparator);
+            T temp = accessor.create(aim - (accessor.apply(a[j]) + delta));
+            int l = search.first(a, incremIndex, j - 1, temp, accessor);
             if (l != -1) {
-                count += addSet(l, l == j - 1 ? j : search.last(a, l, j - 1, temp, comparator) + 1, arr, arr_len, sets);
+                count += addSet(l, l == j - 1 ? j : search.last(a, l, j - 1, temp, accessor) + 1, arr);
             }
         }
         return count;
     }
 
     // TC: O((n-b-2)^b+n)
-    protected int findWithSets(T[] a, int a_len, int b, double aim, int incremIndex, int count, double combinedValue,
-            int[] arr, int arr_len, List<int[]> sets) {
+    protected int findWithSets(T[] a, int b, int incremIndex, int count, double combinedValue, int[] arr) {
         if (arr_len == 2) {
-            return findWithSetsPair(a, a_len, aim, 0, 0, count, arr, arr_len, sets);
+            return findWithSetsPair(a, 0, 0, count, arr);
         }
 
         for (int i = incremIndex; i < a_len - (b - 1); i++) {
             arr[arr_len - b] = i;
-            double res = accessor.value(a[i]) + combinedValue;
+            double res = accessor.apply(a[i]) + combinedValue;
             if (b > 3) {
-                count = findWithSets(a, a_len, b - 1, aim, i + 1, count, res, arr, arr_len, sets);
+                count = findWithSets(a, b - 1, i + 1, count, res, arr);
             } else {
-                count = findWithSetsPair(a, a_len, aim, i + 1, res, count, arr, arr_len, sets);
+                count = findWithSetsPair(a, i + 1, res, count, arr);
             }
         }
         return count;
     }
 
-    private int addSet(int l, int j, int[] arr, int arr_len, List<int[]> sets) {
+    private int addSet(int l, int j, int[] arr) {
         int size = j - l;
         while (l < j) {
             arr[arr_len - 2] = l;

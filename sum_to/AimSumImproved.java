@@ -4,32 +4,34 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
-import accessor.Accessor;
+import sum_to.interfaces.AimSum;
+import sum_to.interfaces.SetCount;
 
-public class AimSumImproved<T> extends AimSum<T> {
-
-    private Accessor<T> accessor;
+public class AimSumImproved<T, R extends Function<T, Double>> extends SetCount<T, R>
+        implements AimSum<T, Double, R, CountSets> {
 
     // T(N)=aNb (p law)
     // (b slope) (Nb order of growth)
     // (a scale of process)
-    public CountSets count(T[] a, int b, double aim, Accessor<T> accessor) {
-        // n^b makes space complexity too big
-        List<int[]> sets = new ArrayList<>();
-
+    public CountSets count(T[] a, int b, Double aim, R accessor) {
         this.accessor = accessor;
-        int count = findWithSets(a, a.length, b, aim, 0, 0, 0, new int[b], b, sets);
-        return new CountSets(sets, count);
+        this.a_len = a.length;
+        this.aim = aim;
+        this.arr_len = b;
+
+        // n^b makes space complexity too big
+        this.sets = new ArrayList<>();
+        return new CountSets(this.sets, findWithSets(a, b, 0, 0, 0, new int[b]));
     }
 
-    private int findWithSetsPair(T[] a, int a_len, double aim, int incremIndex, double delta, int count, int[] arr,
-            int arr_len, List<int[]> sets) {
+    private int findWithSetsPair(T[] a, int incremIndex, double delta, int count, int[] arr) {
         Map<Double, List<Integer>> numMap = new HashMap<>();
         for (int j = incremIndex; j < a_len; j++) {
-            double temp = aim - (accessor.value(a[j]) + delta);
+            double temp = aim - (accessor.apply(a[j]) + delta);
             if (numMap.containsKey(temp)) {
-                count += addSet(numMap, temp, j, arr, arr_len, sets);
+                count += addSet(numMap, temp, j, arr);
             }
             addComplement(numMap, a, j);
         }
@@ -37,26 +39,24 @@ public class AimSumImproved<T> extends AimSum<T> {
     }
 
     // TC: O((n-b-2)^b+n)
-    protected int findWithSets(T[] a, int a_len, int b, double aim, int incremIndex, int count, double combinedValue,
-            int[] arr, int arr_len, List<int[]> sets) {
+    protected int findWithSets(T[] a, int b, int incremIndex, int count, double combinedValue, int[] arr) {
         if (arr_len == 2) {
-            return findWithSetsPair(a, a_len, aim, 0, 0, count, arr, arr_len, sets);
+            return findWithSetsPair(a, 0, 0, count, arr);
         }
 
         for (int i = incremIndex; i < a_len - (b - 1); i++) {
             arr[arr_len - b] = i;
-            double res = accessor.value(a[i]) + combinedValue;
+            double res = accessor.apply(a[i]) + combinedValue;
             if (b > 3) {
-                count = findWithSets(a, a_len, b - 1, aim, i + 1, count, res, arr, arr_len, sets);
+                count = findWithSets(a, b - 1, i + 1, count, res, arr);
             } else {
-                count = findWithSetsPair(a, a_len, aim, i + 1, res, count, arr, arr_len, sets);
+                count = findWithSetsPair(a, i + 1, res, count, arr);
             }
         }
         return count;
     }
 
-    private int addSet(Map<Double, List<Integer>> numMap, double temp, int j, int[] arr, int arr_len,
-            List<int[]> sets) {
+    private int addSet(Map<Double, List<Integer>> numMap, double temp, int j, int[] arr) {
         List<Integer> indexCom = numMap.get(temp);
         for (Integer integer : indexCom) {
             arr[arr_len - 2] = integer;
@@ -67,7 +67,7 @@ public class AimSumImproved<T> extends AimSum<T> {
     }
 
     private void addComplement(Map<Double, List<Integer>> numMap, T[] a, int j) {
-        double res = accessor.value(a[j]);
+        double res = accessor.apply(a[j]);
         if (numMap.containsKey(res)) {
             numMap.get(res).add(j);
         } else {

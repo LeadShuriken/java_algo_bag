@@ -1,7 +1,8 @@
 package accessor;
 
-public interface Accessor<T> {
-    public double value(T a);
+import java.util.Comparator;
+import java.util.function.Function;
 
-    public T obj(double a);
+public interface Accessor<T, R> extends Comparator<T>, Function<T, R> {
+    public abstract T create(R a);
 }
