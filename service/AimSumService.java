@@ -6,8 +6,6 @@ import java.util.Comparator;
 import accessor.Accessor;
 import accessor.Point2DAccessor;
 
-import comparator.Point2DComparator;
-
 import pojo.Point2D;
 import sort.QuickSort;
 
@@ -28,13 +26,12 @@ public class AimSumService {
         final Integer[] N = RandomUtils.randIntArray(COUNT, -20, 50);
         final Point2D[] ARR = new Point2D[COUNT];
         final Accessor<Point2D> ACCESSOR = new Point2DAccessor();
-        final Comparator<Point2D> COMPARATOR = new Point2DComparator();
 
         for (int i = 0; i < COUNT; i++) {
             ARR[i] = new Point2D(N[i], N[i]);
         }
 
-        new QuickSort<Point2D>().sort(ARR, 0, N.length, COMPARATOR);
+        new QuickSort<Point2D>().sort(ARR, 0, N.length, Point2D.COMP_BY_X);
 
         final int B = 3;
         final int C = 0;
@@ -72,7 +69,7 @@ public class AimSumService {
         // System.out.println(Arrays.toString(i));
         // }
 
-        ts = new AimSumBinarySearch<>(COMPARATOR);
+        ts = new AimSumBinarySearch<>(Point2D.COMP_BY_X);
         start = System.nanoTime();
         for (int i = 0; i < RUN; i++) {
             res = ts.count(ARR, B, C, ACCESSOR);

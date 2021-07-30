@@ -8,12 +8,11 @@ JAVA ALGO BAG is an exploration into algorithms and slim data structure runtime 
 
 JAVA-ALGO-BAG uses a number of open source projects:
 
-  * [JAVA6] - JAVA 6 SDK OR HIGHER
+  * [JAVA8] - JAVA 8 SDK OR HIGHER
 
 ## Content
 
  * Accessor - Data accessors for associating java classes with properties of interest to search.
- * Comparator - Data comparators for associating java classes with properties of interest to sort.
  * Data Structure - Reduced versions of Stack and Queue implemented with Linked List and Array.
  * Dijkstra Two Stack - Two stack expression evaluation algorithm.
  * Intersection - Comparable Object array intersection count.

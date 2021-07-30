@@ -13,12 +13,9 @@ import sort.QuickSort;
 
 import java.util.Comparator;
 
-import comparator.ComparableComparator;
-
 public class SortService {
     public static void main(String[] args) {
 
-        Comparator<Integer> b = new ComparableComparator<>();
         Sort<Integer> sr = new QuickSort<>();
 
         // sr = new InsertionSort<>();
@@ -35,8 +32,8 @@ public class SortService {
 
         long start = System.nanoTime();
         for (int i = 0; i < N.length; i++) {
-            sr.sort(N, 0, N.length, b);
-            if (!sr.isSorted(N, 0, N.length, b)) {
+            sr.sort(N, 0, N.length, Integer::compare);
+            if (!sr.isSorted(N, 0, N.length, Integer::compare)) {
                 System.out.println("Not Sorted");
                 return;
             }

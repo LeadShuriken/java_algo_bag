@@ -1,8 +1,33 @@
 package pojo;
 
+import java.util.Comparator;
+
 public class Point2D implements Comparable<Point2D> {
     private final double x;
     private final double y;
+
+    public static final Comparator<Point2D> COMP_BY_X = new ByX();
+    public static final Comparator<Point2D> COMP_BY_Y = new ByY();
+
+    private static class ByY implements Comparator<Point2D> {
+        public int compare(Point2D a, Point2D b) {
+            if (a.getY() > b.getY())
+                return 1;
+            else if (a.getY() < b.getY())
+                return -1;
+            return 0;
+        }
+    }
+
+    private static class ByX implements Comparator<Point2D> {
+        public int compare(Point2D a, Point2D b) {
+            if (a.getX() > b.getX())
+                return 1;
+            else if (a.getX() < b.getX())
+                return -1;
+            return 0;
+        }
+    }
 
     public Point2D(double x, double y) {
         this.x = x;
