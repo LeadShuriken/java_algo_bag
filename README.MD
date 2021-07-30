@@ -12,7 +12,6 @@ JAVA-ALGO-BAG uses a number of open source projects:
 
 ## Content
 
- * Accessor - Data accessors for associating java classes with properties of interest to search.
  * Data Structure - Reduced versions of Stack and Queue implemented with Linked List and Array.
  * Dijkstra Two Stack - Two stack expression evaluation algorithm.
  * Intersection - Comparable Object array intersection count.

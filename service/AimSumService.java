@@ -3,7 +3,6 @@ package service;
 import java.util.Arrays;
 import java.util.function.Function;
 
-import accessor.Accessor;
 import pojo.Point2D;
 import sort.QuickSort;
 import sum_to.AimSumBinarySearch;
@@ -13,6 +12,7 @@ import sum_to.AimSumBrute;
 import sum_to.AimSumCount;
 import sum_to.CountSets;
 import sum_to.interfaces.AimSum;
+import util.Accessor;
 import util.RandomUtils;
 
 public class AimSumService {

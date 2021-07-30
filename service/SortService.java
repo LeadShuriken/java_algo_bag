@@ -7,6 +7,7 @@ import sort.InsertionSort;
 import sort.SelectSort;
 import sort.ShellSort;
 import sort.MergeSort;
+import pojo.Point2D;
 import sort.BogoSort;
 import sort.BogoSort;
 import sort.QuickSort;
@@ -14,7 +15,7 @@ import sort.QuickSort;
 public class SortService {
     public static void main(String[] args) {
 
-        Sort<Integer> sr = new QuickSort<>();
+        Sort<Point2D> sr = new QuickSort<>();
 
         // sr = new InsertionSort<>();
         // sr = new SelectSort<>();
@@ -25,13 +26,21 @@ public class SortService {
         // System.out.println("Init array of ints ..");
         // int[] N = StdInReader.readIntArray();
 
-        Integer[] N = RandomUtils.randIntArray(1000, 0, 1000);
-        Integer[] R = N.clone();
+        final int COUNT = 1000;
+
+        final Integer[] ARR = RandomUtils.randIntArray(COUNT, -20, 50);
+
+        Point2D[] N = new Point2D[COUNT];
+        for (int i = 0; i < COUNT; i++) {
+            N[i] = new Point2D(ARR[i], ARR[i]);
+        }
+
+        Point2D[] R = N.clone();
 
         long start = System.nanoTime();
         for (int i = 0; i < N.length; i++) {
-            sr.sort(N, 0, N.length, Integer::compare);
-            if (!sr.isSorted(N, 0, N.length, Integer::compare)) {
+            sr.sort(N, 0, N.length, Point2D.X_SORT);
+            if (!sr.isSorted(N, 0, N.length, Point2D.X_SORT)) {
                 System.out.println("Not Sorted");
                 return;
             }
