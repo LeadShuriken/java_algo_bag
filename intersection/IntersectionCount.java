@@ -9,7 +9,7 @@ public class IntersectionCount {
         Sort<T> sr = new QuickSort<>();
 
         sr.sort(a, 0, a.length, T::compareTo);
-        sr.sort(b, 0, a.length, T::compareTo);
+        sr.sort(b, 0, b.length, T::compareTo);
 
         int i = 0;
         int j = 0;
