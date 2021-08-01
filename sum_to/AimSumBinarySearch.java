@@ -1,22 +1,21 @@
 package sum_to;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import search.BinarySearch;
 import sum_to.interfaces.AimSum;
 import sum_to.interfaces.SetCount;
 import util.Accessor;
 
-public class AimSumBinarySearch<T, R extends Accessor<T, Double>> extends SetCount<T, R>
-        implements AimSum<T, Double, R, CountSets> {
+public class AimSumBinarySearch<T, Accezor extends Accessor<T, Double>> extends SetCount<T, Accezor>
+        implements AimSum<T, Accezor, CountSets> {
 
     private BinarySearch<T> search = new BinarySearch<>();
 
     // T(N)=aNb (p law)
     // (b slope) (Nb order of growth)
     // (a scale of process)
-    public CountSets count(T[] a, int b, Double aim, R accessor) {
+    public CountSets count(T[] a, int b, double aim, Accezor accessor) {
         this.accessor = accessor;
         this.a_len = a.length;
         this.aim = aim;

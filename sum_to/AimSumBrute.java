@@ -1,20 +1,19 @@
 package sum_to;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Function;
 
 import sum_to.interfaces.AimSum;
 import sum_to.interfaces.SetCount;
 
-public class AimSumBrute<T, R extends Function<T, Double>> extends SetCount<T, R>
-        implements AimSum<T, Double, R, CountSets> {
+public class AimSumBrute<Type, Accessor extends Function<Type, Double>> extends SetCount<Type, Accessor>
+        implements AimSum<Type, Accessor, CountSets> {
 
     // TC: O(n^b)
     // T(N)=aNb (p law)
     // (b slope) (Nb order of growth)
     // (a scale of process)
-    public CountSets count(T[] a, int b, Double aim, R accessor) {
+    public CountSets count(Type[] a, int b, double aim, Accessor accessor) {
         this.accessor = accessor;
         this.a_len = a.length;
         this.aim = aim;
@@ -26,7 +25,7 @@ public class AimSumBrute<T, R extends Function<T, Double>> extends SetCount<T, R
     }
 
     // TC: O((n-b)^b) (brute force)
-    protected int findWithSets(T[] a, int b, int pIndex, int count, double combinedValue, int[] arr) {
+    protected int findWithSets(Type[] a, int b, int pIndex, int count, double combinedValue, int[] arr) {
         for (int i = pIndex; i < a_len - (b - 1); i++) {
             arr[arr_len - b] = i;
             double val = accessor.apply(a[i]);

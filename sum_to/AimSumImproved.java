@@ -9,13 +9,13 @@ import java.util.function.Function;
 import sum_to.interfaces.AimSum;
 import sum_to.interfaces.SetCount;
 
-public class AimSumImproved<T, R extends Function<T, Double>> extends SetCount<T, R>
-        implements AimSum<T, Double, R, CountSets> {
+public class AimSumImproved<Type, Accessor extends Function<Type, Double>> extends SetCount<Type, Accessor>
+        implements AimSum<Type, Accessor, CountSets> {
 
     // T(N)=aNb (p law)
     // (b slope) (Nb order of growth)
     // (a scale of process)
-    public CountSets count(T[] a, int b, Double aim, R accessor) {
+    public CountSets count(Type[] a, int b, double aim, Accessor accessor) {
         this.accessor = accessor;
         this.a_len = a.length;
         this.aim = aim;
@@ -26,7 +26,7 @@ public class AimSumImproved<T, R extends Function<T, Double>> extends SetCount<T
         return new CountSets(this.sets, findWithSets(a, b, 0, 0, 0, new int[b]));
     }
 
-    private int findWithSetsPair(T[] a, int incremIndex, double delta, int count, int[] arr) {
+    private int findWithSetsPair(Type[] a, int incremIndex, double delta, int count, int[] arr) {
         Map<Double, List<Integer>> numMap = new HashMap<>();
         for (int j = incremIndex; j < a_len; j++) {
             double temp = aim - (accessor.apply(a[j]) + delta);
@@ -39,7 +39,7 @@ public class AimSumImproved<T, R extends Function<T, Double>> extends SetCount<T
     }
 
     // TC: O((n-b-2)^b+n)
-    protected int findWithSets(T[] a, int b, int incremIndex, int count, double combinedValue, int[] arr) {
+    protected int findWithSets(Type[] a, int b, int incremIndex, int count, double combinedValue, int[] arr) {
         if (arr_len == 2) {
             return findWithSetsPair(a, 0, 0, count, arr);
         }
@@ -66,7 +66,7 @@ public class AimSumImproved<T, R extends Function<T, Double>> extends SetCount<T
         return indexCom.size();
     }
 
-    private void addComplement(Map<Double, List<Integer>> numMap, T[] a, int j) {
+    private void addComplement(Map<Double, List<Integer>> numMap, Type[] a, int j) {
         double res = accessor.apply(a[j]);
         if (numMap.containsKey(res)) {
             numMap.get(res).add(j);

@@ -32,7 +32,7 @@ public class AimSumService {
         final int B = 3;
         final double C = 0;
 
-        AimSum<Point2D, Double, Function<Point2D, Double>, Long> rs = new AimSumCount<>();
+        AimSumCount<Point2D, Function<Point2D, Double>> rs = new AimSumCount<>();
 
         long start = System.nanoTime();
         long res1 = 0;
@@ -42,7 +42,7 @@ public class AimSumService {
 
         System.out.printf("%-25S : %d for %d ns.%n", rs.getClass().getName(), res1, System.nanoTime() - start);
 
-        AimSum<Point2D, Double, Function<Point2D, Double>, CountSets> ts = new AimSumBrute<>();
+        AimSum<Point2D, Function<Point2D, Double>, CountSets> ts = new AimSumBrute<>();
         CountSets res = null;
         start = System.nanoTime();
         for (int i = 0; i < RUN; i++) {
@@ -65,7 +65,7 @@ public class AimSumService {
         // System.out.println(Arrays.toString(i));
         // }
 
-        AimSum<Point2D, Double, Accessor<Point2D, Double>, CountSets> fs = new AimSumBinarySearch<>();
+        AimSum<Point2D, Accessor<Point2D, Double>, CountSets> fs = new AimSumBinarySearch<>();
         start = System.nanoTime();
         for (int i = 0; i < RUN; i++) {
             res = fs.count(ARR, B, C, Point2D.X_ACCESSOR);

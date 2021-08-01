@@ -6,5 +6,5 @@ public abstract class SumCount<T, R> {
     protected double aim;
     protected R accessor;
 
-    protected abstract long findCount(T[] a, int b, int pIndex, long count, double combinedValue);
+    protected abstract int findCount(T[] a, int b, int pIndex, int count, double combinedValue);
 }
