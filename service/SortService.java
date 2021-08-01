@@ -7,6 +7,12 @@ import sort.InsertionSort;
 import sort.SelectSort;
 import sort.ShellSort;
 import sort.MergeSort;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
 import pojo.Point2D;
 import sort.BogoSort;
 import sort.BogoSort;
@@ -32,7 +38,7 @@ public class SortService {
 
         Point2D[] N = new Point2D[COUNT];
         for (int i = 0; i < COUNT; i++) {
-            N[i] = new Point2D(ARR[i], ARR[i]);
+            N[i] = new Point2D(ARR[i], Math.random());
         }
 
         Point2D[] R = N.clone();
@@ -44,8 +50,15 @@ public class SortService {
                 System.out.println("Not Sorted");
                 return;
             }
+
+            if (!sr.isStable(N, 0, N.length, 0, Arrays.asList(Point2D.X_SORT, Point2D.Y_SORT))) {
+                System.out.println("Not Stable");
+                return;
+            }
+
             N = R.clone();
         }
         System.out.printf("Sort of %d elements sorted in %d ns.%n", N.length, System.nanoTime() - start);
+
     }
 }

@@ -6,8 +6,13 @@ import sort.interfaces.Sort;
 
 public class MergeSort<T> extends SortAbst<T> {
 
-    private final int CUTOFF = 8;
-    private final Sort<T> SORT = new QuickSort<>();
+    private final int CUTOFF;
+    private final Sort<T> SORT;
+
+    public MergeSort(int cutoff, Sort<T> stableNoneSort) {
+        CUTOFF = cutoff;
+        SORT = stableNoneSort;
+    }
 
     public void sort(T[] a, int lo, int hi, Comparator<? super T> b) {
         T[] aux = a.clone();
@@ -30,7 +35,6 @@ public class MergeSort<T> extends SortAbst<T> {
     }
 
     private void merge(T[] a, T[] aux, int lo, int mid, int hi, Comparator<? super T> b) {
-
         int i = lo, j = mid + 1;
         for (int k = lo; k <= hi; k++) {
             if (i > mid)
