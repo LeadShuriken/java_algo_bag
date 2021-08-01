@@ -23,35 +23,44 @@ public class SortService {
 
         Sort<Point2D> sr = new QuickSort<>();
 
-        // sr = new InsertionSort<>();
+        sr = new InsertionSort<>();
         // sr = new SelectSort<>();
         // sr = new ShellSort<>();
-        // sr = new MergeSort<>();
+        sr = new MergeSort<>(8, sr);
         // sr = new BogoSort<>();
 
         // System.out.println("Init array of ints ..");
         // int[] N = StdInReader.readIntArray();
 
         final int COUNT = 1000;
+        final int FLIP = 1;
 
-        final Integer[] ARR = RandomUtils.randIntArray(COUNT, -20, 50);
+        final Integer[] ARR = RandomUtils.randIntArray(COUNT, 0, 20);
+        final Integer[] ARR_Y = RandomUtils.randIntArray(COUNT, 0, 20);
 
         Point2D[] N = new Point2D[COUNT];
         for (int i = 0; i < COUNT; i++) {
-            N[i] = new Point2D(ARR[i], Math.random());
+            N[i] = new Point2D(ARR[i], ARR_Y[i]);
         }
 
         Point2D[] R = N.clone();
 
         long start = System.nanoTime();
-        for (int i = 0; i < N.length; i++) {
+        for (int i = 0; i < FLIP; i++) {
             sr.sort(N, 0, N.length, Point2D.X_SORT);
             if (!sr.isSorted(N, 0, N.length, Point2D.X_SORT)) {
                 System.out.println("Not Sorted");
                 return;
             }
 
-            if (!sr.isStable(N, 0, N.length, 0, Arrays.asList(Point2D.X_SORT, Point2D.Y_SORT))) {
+            if (!sr.isStable(N, 0, N.length, 0, Arrays.asList(Point2D.X_SORT))) {
+                System.out.println("Not Stable");
+                return;
+            }
+
+            sr.sort(N, 0, N.length, Point2D.Y_SORT);
+
+            if (!sr.isStable(N, 0, N.length, 0, Arrays.asList(Point2D.Y_SORT, Point2D.X_SORT))) {
                 System.out.println("Not Stable");
                 return;
             }
