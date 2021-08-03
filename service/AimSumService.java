@@ -3,7 +3,10 @@ package service;
 import java.util.Arrays;
 import java.util.function.Function;
 
-import pojo.Point2D;
+import misc.Accessor;
+import misc.RandomUtils;
+import misc.pojo.Point2D;
+import sort.InsertionSort;
 import sort.QuickSort;
 import sum_to.AimSumBinarySearch;
 import sum_to.AimSumImproved;
@@ -12,8 +15,6 @@ import sum_to.AimSumBrute;
 import sum_to.AimSumCount;
 import sum_to.CountSets;
 import sum_to.interfaces.AimSum;
-import util.Accessor;
-import util.RandomUtils;
 
 public class AimSumService {
     public static void main(String[] args) {
@@ -27,7 +28,7 @@ public class AimSumService {
             ARR[i] = new Point2D(N[i], N[i]);
         }
 
-        new QuickSort<Point2D>().sort(ARR, 0, N.length, Point2D.X_ACCESSOR);
+        new QuickSort<Point2D>(20, new InsertionSort<>()).sort(ARR, 0, N.length, Point2D.X_ACCESSOR);
 
         final int B = 3;
         final double C = 0;

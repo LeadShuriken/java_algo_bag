@@ -1,4 +1,4 @@
-package util;
+package misc;
 
 import java.util.Comparator;
 import java.util.function.Function;

@@ -6,7 +6,7 @@ import data_structure.ItemQueue;
 import data_structure.ItemStack;
 import data_structure.interfaces.Queue;
 import data_structure.interfaces.Stack;
-import pojo.Point2D;
+import misc.pojo.Point2D;
 
 public class DataStructService {
     public static void main(String[] args) {

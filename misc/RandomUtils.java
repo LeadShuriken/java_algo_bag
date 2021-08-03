@@ -1,4 +1,4 @@
-package util;
+package misc;
 
 import java.util.Random;
 
@@ -37,5 +37,4 @@ public class RandomUtils {
             a[i] = swap;
         }
     }
-
 }

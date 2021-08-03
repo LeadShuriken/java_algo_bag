@@ -2,10 +2,10 @@ package sum_to;
 
 import java.util.ArrayList;
 
+import misc.Accessor;
 import search.BinarySearch;
 import sum_to.interfaces.AimSum;
 import sum_to.interfaces.SetCount;
-import util.Accessor;
 
 public class AimSumBinarySearch<T, Accezor extends Accessor<T, Double>> extends SetCount<T, Accezor>
         implements AimSum<T, Accezor, CountSets> {

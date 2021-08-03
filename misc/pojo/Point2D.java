@@ -1,8 +1,8 @@
-package pojo;
+package misc.pojo;
 
 import java.util.Comparator;
 
-import util.Accessor;
+import misc.Accessor;
 
 public class Point2D implements Comparable<Point2D> {
     private final double x;

@@ -15,13 +15,12 @@ JAVA-ALGO-BAG uses a number of open source projects:
  * Data Structure - Reduced versions of Stack and Queue implemented with Linked List and Array.
  * Dijkstra Two Stack - Two stack expression evaluation algorithm.
  * Intersection - Comparable Object array intersection count.
- * Pojo - Plain old java objects used for testing.
  * Search - Common Searching Algorithms.
  * Service - Test/Comparison Runner.
  * Sort - Common Sorting Algorithms.
  * Sum To - Advanced take on the ThreeSum problem.
  * Union Find - Common Union(Connect) and Find(Is Connected) Algorithms.
- * Util - Helper Classes and such.
+ * Misc - Helper Classes and such.
 
 ## Todo
 

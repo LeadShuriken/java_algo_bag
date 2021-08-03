@@ -1,12 +1,13 @@
 package intersection;
 
 import sort.interfaces.Sort;
+import sort.InsertionSort;
 import sort.QuickSort;
 
 public class IntersectionCount {
 
     public <T extends Comparable<T>> int countIntersection(T[] a, T[] b) {
-        Sort<T> sr = new QuickSort<>();
+        Sort<T> sr = new QuickSort<>(20, new InsertionSort<>());
 
         sr.sort(a, 0, a.length, T::compareTo);
         sr.sort(b, 0, b.length, T::compareTo);

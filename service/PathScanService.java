@@ -1,8 +1,8 @@
 package service;
 
 import intersection.IntersectionCount;
-import util.RandomUtils;
-import util.StdInReader;
+import misc.RandomUtils;
+import misc.StdInReader;
 
 public class PathScanService {
     public static void main(String[] args) {

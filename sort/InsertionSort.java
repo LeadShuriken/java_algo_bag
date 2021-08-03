@@ -2,6 +2,8 @@ package sort;
 
 import java.util.Comparator;
 
+import sort.interfaces.SortAbst;
+
 public class InsertionSort<T> extends SortAbst<T> {
 
     public void sort(T[] a, int lo, int hi, Comparator<? super T> b) {

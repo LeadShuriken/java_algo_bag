@@ -1,8 +1,6 @@
 package service;
 
 import sort.interfaces.Sort;
-import util.RandomUtils;
-import util.StdInReader;
 import sort.InsertionSort;
 import sort.SelectSort;
 import sort.ShellSort;
@@ -13,7 +11,9 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-import pojo.Point2D;
+import misc.RandomUtils;
+import misc.StdInReader;
+import misc.pojo.Point2D;
 import sort.BogoSort;
 import sort.BogoSort;
 import sort.QuickSort;
@@ -21,12 +21,12 @@ import sort.QuickSort;
 public class SortService {
     public static void main(String[] args) {
 
-        Sort<Point2D> sr = new QuickSort<>();
+        Sort<Point2D> sr = new QuickSort<>(20, new InsertionSort<>());
 
-        sr = new InsertionSort<>();
+        // sr = new InsertionSort<>();
         // sr = new SelectSort<>();
         // sr = new ShellSort<>();
-        sr = new MergeSort<>(8, sr);
+        // sr = new MergeSort<>(8, sr);
         // sr = new BogoSort<>();
 
         // System.out.println("Init array of ints ..");

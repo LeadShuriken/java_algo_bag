@@ -2,6 +2,8 @@ package sort;
 
 import java.util.Comparator;
 
+import sort.interfaces.SortAbst;
+
 public class BogoSort<T> extends SortAbst<T> {
     // TC: O(nn!)
     public void sort(T[] a, int lo, int hi, Comparator<? super T> b) {

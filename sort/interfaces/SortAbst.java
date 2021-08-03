@@ -1,8 +1,6 @@
-package sort;
+package sort.interfaces;
 
 import java.util.Comparator;
-
-import sort.interfaces.Sort;
 
 public abstract class SortAbst<T> implements Sort<T> {
 
