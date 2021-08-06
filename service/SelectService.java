@@ -3,6 +3,8 @@ package service;
 import misc.RandomUtils;
 import misc.StdInReader;
 import misc.pojo.Point2D;
+import search.BinarySearch;
+import search.Search;
 import select.QuickSelect;
 import select.interfaces.Select;
 import sort.InsertionSort;
@@ -17,7 +19,7 @@ public class SelectService {
         // int[] N = StdInReader.readIntArray();
 
         final int COUNT = 100000;
-        final int LOOKING_FOR = 50;
+        final int LOOKING_FOR = 0;
 
         Point2D[] N = new Point2D[COUNT];
 
@@ -29,7 +31,13 @@ public class SelectService {
         }
 
         new QuickSort<Point2D>(20, new InsertionSort<>()).sort(N, 0, N.length, Point2D.X_ACCESSOR);
-        System.out.println(N[LOOKING_FOR]);
+
+        Search<Point2D> bs = new BinarySearch<>();
+        int l = bs.first(N, 0, COUNT - 1, N[LOOKING_FOR], Point2D.X_COMP);
+        int r = bs.last(N, 0, COUNT - 1, N[LOOKING_FOR], Point2D.X_COMP);
+        for (int i = l; i <= r; i++) {
+            System.out.println(N[i]);
+        }
         RandomUtils.shuffle(N);
 
         long start = System.nanoTime();
