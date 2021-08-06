@@ -8,8 +8,13 @@ import sort.interfaces.SortAbst;
 
 public class QuickSort<T> extends SortAbst<T> {
 
-    private final int CUTOFF;
+    private final Integer CUTOFF;
     private final Sort<T> SORT;
+
+    public QuickSort() {
+        CUTOFF = null;
+        SORT = null;
+    }
 
     public QuickSort(int cutoff, Sort<T> stableNoneSort) {
         CUTOFF = cutoff;
@@ -22,7 +27,7 @@ public class QuickSort<T> extends SortAbst<T> {
         quickSort(a, lo, hi - 1, b);
     }
 
-    private int partition(T[] arr, int lo, int hi, int pivot, Comparator<? super T> b) {
+    protected int partition(T[] arr, int lo, int hi, int pivot, Comparator<? super T> b) {
         int i = lo - 1, j = hi;
         while (i < j) {
             while (less(arr[++i], arr[pivot], b))
@@ -48,7 +53,7 @@ public class QuickSort<T> extends SortAbst<T> {
         quickSort(arr, pi + 1, hi, b);
     }
 
-    private int med(T[] arr, int left, int center, int right, Comparator<? super T> b) {
+    protected int med(T[] arr, int left, int center, int right, Comparator<? super T> b) {
         if (less(arr[center], arr[left], b))
             swap(arr, center, left);
 

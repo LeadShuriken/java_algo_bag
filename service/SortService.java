@@ -47,20 +47,20 @@ public class SortService {
 
         long start = System.nanoTime();
         for (int i = 0; i < FLIP; i++) {
-            sr.sort(N, 0, N.length, Point2D.X_SORT);
-            if (!sr.isSorted(N, 0, N.length, Point2D.X_SORT)) {
+            sr.sort(N, 0, N.length, Point2D.X_COMP);
+            if (!sr.isSorted(N, 0, N.length, Point2D.X_COMP)) {
                 System.out.println("Not Sorted");
                 return;
             }
 
-            if (!sr.isStable(N, 0, N.length, 0, Arrays.asList(Point2D.X_SORT))) {
+            if (!sr.isStable(N, 0, N.length, 0, Arrays.asList(Point2D.X_COMP))) {
                 System.out.println("Not Stable");
                 return;
             }
 
-            sr.sort(N, 0, N.length, Point2D.Y_SORT);
+            sr.sort(N, 0, N.length, Point2D.Y_COMP);
 
-            if (!sr.isStable(N, 0, N.length, 0, Arrays.asList(Point2D.Y_SORT, Point2D.X_SORT))) {
+            if (!sr.isStable(N, 0, N.length, 0, Arrays.asList(Point2D.Y_COMP, Point2D.X_COMP))) {
                 System.out.println("Not Stable");
                 return;
             }
